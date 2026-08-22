@@ -497,21 +497,21 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: 'g2',
-    title: 'Indian Senior Chamber Leadership Conclave',
+    title: 'Indian Senior Chamber Leadership Conclave & VIP Dignitaries',
     category: 'events',
     date: '2025-10-20',
-    imageUrl: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=1000&auto=format&fit=crop',
+    imageUrl: '/events/yp_ramesh_chennithala.png',
     location: 'Thrissur, Kerala',
-    description: 'Special felicitation ceremony and lamps lighting for the Amrith Women Empowerment drive.'
+    description: 'Special felicitation ceremony and lamps lighting by Ramesh Chennithala and senior community leaders.'
   },
   {
     id: 'g3',
-    title: 'AI Literacy Masterclass for High School Educators',
+    title: 'Official Yuvaparipalan Mobile App & Digital Platform Launch',
     category: 'workshops',
     date: '2025-12-05',
-    imageUrl: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1000&auto=format&fit=crop',
+    imageUrl: '/events/yp_app_launch.png',
     location: 'Kannur, Kerala',
-    description: 'Over 250 educators trained on integrating AI tools safely in classroom pedagogy.'
+    description: 'Official launch of the Yuvaparipalan Foundation mobile application and digital learning portal.'
   },
   {
     id: 'g4',
