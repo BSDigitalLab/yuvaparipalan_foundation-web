@@ -237,7 +237,7 @@ export const TEAM_MEMBERS: Leader[] = [
     location: 'Thrissur',
     category: 'executive',
     bio: 'Founder of Palana Educational Charitable Trust (2016) and visionary behind Yuvaparipalan Foundation. Committed to building nationwide youth empowerment frameworks.',
-    avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop',
+    avatarUrl: '/team/biju_sivanand.jpg',
     featured: true,
   },
   {
