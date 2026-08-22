@@ -491,7 +491,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: 'Kerala State Minister Inauguration & Flag Unveiling',
     category: 'vip_visits',
     date: '2025-11-15',
-    imageUrl: 'https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1000&auto=format&fit=crop',
+    imageUrl: '/events/yp_vd_satheeshan.png',
     location: 'Thiruvananthapuram, Kerala',
     description: 'Yuvaparipalan Foundation movement flag officially unveiled by Kerala state ministers and senior leaders.'
   },
