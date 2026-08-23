@@ -3,7 +3,7 @@ import { SEOHead } from '../components/common/SEOHead';
 import { FadeIn } from '../components/motion/FadeIn';
 import {
   ShieldCheck, Heart, Sparkles, Award, Lightbulb, Users, Leaf, Globe,
-  Calendar, Building2, Target, CheckCircle2, Compass, ArrowRight, Shield
+  Calendar, Building2, Target, Compass, ArrowRight, Shield
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -25,6 +25,37 @@ export const AboutPage: React.FC = () => {
     { code: 'SDG 9', title: 'Industry & Innovation' },
     { code: 'SDG 10', title: 'Reduced Inequalities' },
     { code: 'SDG 16', title: 'Peace & Strong Institutions' },
+  ];
+
+  const historicalMilestones = [
+    {
+      stage: '01',
+      badge: 'ORGANIZATION IDENTITY',
+      title: 'Foundation Core & Scope',
+      icon: <ShieldCheck className="w-5 h-5 text-[#15803d]" />,
+      text: 'The Yuvaparipalan Foundation is a national not-for-profit organization dedicated to empowering individuals through education, skill development, leadership, mental well-being, entrepreneurship, and social responsibility.',
+    },
+    {
+      stage: '02',
+      badge: '2016 • FOUNDING ROOTS',
+      title: 'Palana Trust Genesis',
+      icon: <Compass className="w-5 h-5 text-[#15803d]" />,
+      text: 'The Foundation traces its roots to the Palana Educational Charitable Trust, established in 2016 by Mr. Biju A. Sivanandan with the vision of identifying hidden talents and helping individuals discover their true potential.',
+    },
+    {
+      stage: '03',
+      badge: 'COMPANIES ACT, 2013',
+      title: 'Section 8 NGO Registration',
+      icon: <Building2 className="w-5 h-5 text-[#15803d]" />,
+      text: 'Driven by the growing need for holistic human development, the initiative evolved into the Yuvaparipalan Foundation, a Section 8 company established under the Companies Act, 2013.',
+    },
+    {
+      stage: '04',
+      badge: 'PRESENT & VISION 2035',
+      title: 'Nationwide Impact Movement',
+      icon: <Globe className="w-5 h-5 text-[#15803d]" />,
+      text: 'Today, the Foundation is building a nationwide movement that integrates timeless Indian values with modern science, technology, and innovation to create empowered individuals, stronger families, and a progressive nation.',
+    },
   ];
 
   return (
@@ -105,23 +136,23 @@ export const AboutPage: React.FC = () => {
             </div>
           </FadeIn>
 
-          {/* Standardized 2-Column Split Evolution Journey Layout */}
+          {/* Vertical Milestone Staging Visualizer Section */}
           <FadeIn direction="up">
             <div className="p-6 sm:p-10 rounded-3xl bg-white border border-emerald-900/15 shadow-md relative overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
                 
-                {/* Left Column: Heading & Summary */}
-                <div className="lg:col-span-5 text-left space-y-4 lg:sticky lg:top-28">
+                {/* Left Column: Section Header */}
+                <div className="lg:col-span-4 text-left space-y-4 lg:sticky lg:top-28">
                   <span className="text-xs font-mono font-bold text-[#15803d] uppercase tracking-widest bg-emerald-100 px-3 py-0.5 rounded-full border border-emerald-300">
                     Historical Milestones
                   </span>
                   
                   <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight leading-snug">
-                    Our Evolution: From Trust to National Movement
+                    Historical Milestone Staging
                   </h2>
 
                   <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-medium">
-                    From a regional initiative identifying hidden talents to a nationwide Section 8 non-profit organization driving youth empowerment across India.
+                    Chronological progression from founding trust roots to a nationwide Section 8 NGO movement.
                   </p>
 
                   <div className="p-4 rounded-xl bg-emerald-50/80 border border-emerald-200 text-left space-y-2">
@@ -135,49 +166,39 @@ export const AboutPage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Right Column: 3 Evolution Cards */}
-                <div className="lg:col-span-7 space-y-4 text-left">
-                  {/* Step 1 */}
-                  <div className="p-5 sm:p-6 rounded-2xl bg-[#f8faf8] border border-emerald-900/10 space-y-2.5 hover:border-emerald-500/40 transition-all shadow-sm">
-                    <div className="flex items-center justify-between">
-                      <span className="px-2.5 py-0.5 rounded-full bg-[#15803d] text-white font-mono text-[11px] font-bold tracking-wider">
-                        2016 • GENESIS
-                      </span>
-                      <Compass className="w-5 h-5 text-[#15803d]" />
-                    </div>
-                    <h3 className="font-heading font-bold text-base text-slate-950">Palana Trust Foundation</h3>
-                    <p className="text-xs text-slate-600 leading-relaxed font-medium">
-                      The Foundation traces its roots to the <strong className="text-slate-950">Palana Educational Charitable Trust</strong>, established in <strong className="text-[#15803d]">2016 by Mr. Biju A. Sivanandan</strong> with the vision of identifying hidden talents and helping individuals discover their true potential.
-                    </p>
-                  </div>
+                {/* Right Column: Vertical Milestone Staging Line */}
+                <div className="lg:col-span-8 relative space-y-6 text-left pl-6 sm:pl-10">
+                  {/* Vertical Connector Line */}
+                  <div className="absolute top-3 bottom-3 left-3 sm:left-5 w-0.5 bg-gradient-to-b from-[#15803d] via-emerald-400 to-emerald-200" />
 
-                  {/* Step 2 */}
-                  <div className="p-5 sm:p-6 rounded-2xl bg-[#f8faf8] border border-emerald-900/10 space-y-2.5 hover:border-emerald-500/40 transition-all shadow-sm">
-                    <div className="flex items-center justify-between">
-                      <span className="px-2.5 py-0.5 rounded-full bg-[#15803d] text-white font-mono text-[11px] font-bold tracking-wider">
-                        SECTION 8 NGO
-                      </span>
-                      <Building2 className="w-5 h-5 text-[#15803d]" />
-                    </div>
-                    <h3 className="font-heading font-bold text-base text-slate-950">Yuvaparipalan Foundation</h3>
-                    <p className="text-xs text-slate-600 leading-relaxed font-medium">
-                      Driven by the growing need for holistic human development, the initiative evolved into the <strong className="text-slate-950">Yuvaparipalan Foundation</strong>, a registered Section 8 company established under the Companies Act, 2013 for nationwide scale.
-                    </p>
-                  </div>
+                  {historicalMilestones.map((milestone) => (
+                    <div key={milestone.stage} className="relative group">
+                      {/* Glowing Node Marker */}
+                      <div className="absolute -left-6 sm:-left-10 top-5 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white border-2 border-[#15803d] text-[#15803d] font-mono text-[10px] sm:text-xs font-bold flex items-center justify-center shadow-sm group-hover:bg-[#15803d] group-hover:text-white transition-colors z-10">
+                        {milestone.stage}
+                      </div>
 
-                  {/* Step 3 */}
-                  <div className="p-5 sm:p-6 rounded-2xl bg-[#f8faf8] border border-emerald-900/10 space-y-2.5 hover:border-emerald-500/40 transition-all shadow-sm">
-                    <div className="flex items-center justify-between">
-                      <span className="px-2.5 py-0.5 rounded-full bg-[#15803d] text-white font-mono text-[11px] font-bold tracking-wider">
-                        VISION 2035
-                      </span>
-                      <Globe className="w-5 h-5 text-[#15803d]" />
+                      {/* Milestone Card */}
+                      <div className="p-5 sm:p-6 rounded-2xl bg-[#f8faf8] border border-emerald-900/10 hover:border-emerald-500/40 transition-all duration-300 shadow-sm hover:shadow-md space-y-2.5">
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <span className="px-2.5 py-0.5 rounded-full bg-[#15803d] text-white font-mono text-[11px] font-bold tracking-wider">
+                            {milestone.badge}
+                          </span>
+                          <div className="p-1.5 rounded-lg bg-emerald-50 border border-emerald-200">
+                            {milestone.icon}
+                          </div>
+                        </div>
+
+                        <h3 className="font-heading font-bold text-base sm:text-lg text-slate-950">
+                          {milestone.title}
+                        </h3>
+
+                        <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
+                          {milestone.text}
+                        </p>
+                      </div>
                     </div>
-                    <h3 className="font-heading font-bold text-base text-slate-950">Nationwide Impact Movement</h3>
-                    <p className="text-xs text-slate-600 leading-relaxed font-medium">
-                      Today, the Foundation is building a nationwide movement that integrates timeless Indian values with modern science, technology, and innovation to create empowered individuals, stronger families, and a progressive nation.
-                    </p>
-                  </div>
+                  ))}
                 </div>
 
               </div>
