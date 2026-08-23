@@ -358,10 +358,7 @@ export const AboutPage: React.FC = () => {
               </div>
 
               {/* Bottom Action Strip */}
-              <div className="pt-6 border-t border-emerald-700/60 flex flex-col sm:flex-row items-center justify-between gap-4 relative z-10">
-                <span className="text-[11px] text-emerald-100 font-mono font-semibold">
-                  Section 8 NGO • Kannur & Coimbatore Headquarters • Helpline: +91 95628 58868
-                </span>
+              <div className="pt-6 border-t border-emerald-700/60 flex justify-end items-center relative z-10">
                 <Link to="/volunteer">
                   <button className="bg-white text-emerald-950 hover:bg-emerald-50 font-bold text-xs px-5 py-2.5 rounded-xl shadow-md transition-all hover:scale-105 flex items-center gap-1.5">
                     <span>Join as Volunteer</span>
