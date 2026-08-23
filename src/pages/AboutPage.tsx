@@ -30,6 +30,7 @@ export const AboutPage: React.FC = () => {
   const historicalMilestones = [
     {
       stage: '01',
+      year: '2016',
       badge: 'ORGANIZATION IDENTITY',
       title: 'Foundation Core & Scope',
       icon: <ShieldCheck className="w-4 h-4 text-[#15803d]" />,
@@ -37,13 +38,15 @@ export const AboutPage: React.FC = () => {
     },
     {
       stage: '02',
-      badge: '2016 • FOUNDING ROOTS',
-      title: 'Palana Trust Genesis',
+      year: '2016',
+      badge: 'PALANA TRUST ROOTS',
+      title: 'Palana Educational Charitable Trust',
       icon: <Compass className="w-4 h-4 text-[#15803d]" />,
       text: 'The Foundation traces its roots to the Palana Educational Charitable Trust, established in 2016 by Mr. Biju A. Sivanandan with the vision of identifying hidden talents and helping individuals discover their true potential.',
     },
     {
       stage: '03',
+      year: '2021',
       badge: 'COMPANIES ACT, 2013',
       title: 'Section 8 NGO Registration',
       icon: <Building2 className="w-4 h-4 text-[#15803d]" />,
@@ -51,6 +54,7 @@ export const AboutPage: React.FC = () => {
     },
     {
       stage: '04',
+      year: '2025+',
       badge: 'PRESENT & VISION 2035',
       title: 'Nationwide Impact Movement',
       icon: <Globe className="w-4 h-4 text-[#15803d]" />,
@@ -136,71 +140,76 @@ export const AboutPage: React.FC = () => {
             </div>
           </FadeIn>
 
-          {/* Compact Vertical Milestone Staging Visualizer Section */}
+          {/* Alternating Left and Right Vertical Milestone Line Timeline Section */}
           <FadeIn direction="up">
-            <div className="p-5 sm:p-7 rounded-2xl bg-white border border-emerald-900/15 shadow-md relative overflow-hidden">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+            <div className="p-6 sm:p-10 rounded-3xl bg-white border border-emerald-900/15 shadow-md relative overflow-hidden space-y-8">
+              <div className="text-center max-w-2xl mx-auto space-y-2">
+                <span className="text-xs font-mono font-bold text-[#15803d] uppercase tracking-widest bg-emerald-100 px-3 py-1 rounded-full border border-emerald-300">
+                  Historical Milestones
+                </span>
+                <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">
+                  Our Evolution & Milestone Staging
+                </h2>
+                <p className="text-slate-600 text-xs sm:text-sm font-medium">
+                  Chronological progression from founding trust roots to a nationwide Section 8 movement.
+                </p>
+              </div>
+
+              {/* Timeline Staging Grid Container */}
+              <div className="relative py-4">
+                {/* Central Vertical Connector Line (Desktop) */}
+                <div className="hidden lg:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-1 bg-gradient-to-b from-[#15803d] via-emerald-400 to-emerald-200 rounded-full" />
                 
-                {/* Left Column: Section Header */}
-                <div className="lg:col-span-4 text-left space-y-3 lg:sticky lg:top-24">
-                  <span className="text-[11px] font-mono font-bold text-[#15803d] uppercase tracking-widest bg-emerald-100 px-2.5 py-0.5 rounded-full border border-emerald-300">
-                    Historical Milestones
-                  </span>
-                  
-                  <h2 className="font-heading text-xl sm:text-2xl font-bold text-slate-950 tracking-tight leading-snug">
-                    Historical Milestone Staging
-                  </h2>
+                {/* Left Vertical Connector Line (Mobile) */}
+                <div className="lg:hidden absolute top-0 bottom-0 left-4 w-1 bg-gradient-to-b from-[#15803d] via-emerald-400 to-emerald-200 rounded-full" />
 
-                  <p className="text-slate-600 text-xs leading-relaxed font-medium">
-                    Chronological progression from founding trust roots to a nationwide Section 8 NGO movement.
-                  </p>
+                <div className="space-y-8 sm:space-y-12">
+                  {historicalMilestones.map((milestone, index) => {
+                    const isEven = index % 2 === 1; // 0 & 2 on left, 1 & 3 on right
 
-                  <div className="p-3.5 rounded-lg bg-emerald-50/80 border border-emerald-200 text-left space-y-1.5">
-                    <div className="flex items-center gap-1.5 text-emerald-900 font-bold text-[11px]">
-                      <Shield className="w-3.5 h-3.5 text-[#15803d]" />
-                      <span>Registered Section 8 Governance</span>
-                    </div>
-                    <p className="text-[10px] text-slate-600 leading-relaxed font-medium">
-                      Operating state chapters, scholarship drives, AI masterclasses, and certified volunteer networks under strict Section 8 transparency standards.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Right Column: Vertical Milestone Staging Line */}
-                <div className="lg:col-span-8 relative space-y-4 text-left pl-5 sm:pl-8">
-                  {/* Vertical Connector Line */}
-                  <div className="absolute top-2.5 bottom-2.5 left-2.5 sm:left-4 w-0.5 bg-gradient-to-b from-[#15803d] via-emerald-400 to-emerald-200" />
-
-                  {historicalMilestones.map((milestone) => (
-                    <div key={milestone.stage} className="relative group">
-                      {/* Glowing Node Marker */}
-                      <div className="absolute -left-5 sm:-left-8 top-4 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white border-2 border-[#15803d] text-[#15803d] font-mono text-[9px] sm:text-[10px] font-bold flex items-center justify-center shadow-sm group-hover:bg-[#15803d] group-hover:text-white transition-colors z-10">
-                        {milestone.stage}
-                      </div>
-
-                      {/* Milestone Card */}
-                      <div className="p-4 sm:p-4.5 rounded-xl bg-[#f8faf8] border border-emerald-900/10 hover:border-emerald-500/40 transition-all duration-300 shadow-sm space-y-2">
-                        <div className="flex flex-wrap items-center justify-between gap-2">
-                          <span className="px-2 py-0.5 rounded-full bg-[#15803d] text-white font-mono text-[10px] font-bold tracking-wider">
-                            {milestone.badge}
-                          </span>
-                          <div className="p-1 rounded-md bg-emerald-50 border border-emerald-200">
-                            {milestone.icon}
+                    return (
+                      <div key={milestone.stage} className="relative flex flex-col lg:flex-row items-center">
+                        
+                        {/* Central Year Node Marker (Desktop) */}
+                        <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 top-4 flex-col items-center justify-center z-20">
+                          <div className="px-3.5 py-1 rounded-full bg-[#15803d] text-white font-mono text-xs font-black shadow-md border-2 border-white ring-4 ring-emerald-100">
+                            {milestone.year}
                           </div>
                         </div>
 
-                        <h3 className="font-heading font-bold text-sm sm:text-base text-slate-950">
-                          {milestone.title}
-                        </h3>
+                        {/* Mobile Left Node */}
+                        <div className="lg:hidden absolute left-4 -translate-x-1/2 top-4 z-20">
+                          <div className="px-2.5 py-0.5 rounded-full bg-[#15803d] text-white font-mono text-[10px] font-bold shadow-md border-2 border-white">
+                            {milestone.year}
+                          </div>
+                        </div>
 
-                        <p className="text-xs text-slate-600 leading-relaxed font-medium">
-                          {milestone.text}
-                        </p>
+                        {/* Alternating Card Placement */}
+                        <div className={`w-full lg:w-1/2 ${isEven ? 'lg:ml-auto lg:pl-12 pl-10' : 'lg:mr-auto lg:pr-12 pl-10 lg:pl-0 lg:text-right'}`}>
+                          <div className="p-4 sm:p-5 rounded-2xl bg-[#f8faf8] border border-emerald-900/10 hover:border-emerald-500/50 transition-all duration-300 shadow-sm hover:shadow-md space-y-2.5">
+                            <div className={`flex flex-wrap items-center gap-2 ${isEven ? 'justify-start' : 'lg:justify-end justify-start'}`}>
+                              <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-[#15803d] border border-emerald-300 font-mono text-[10px] font-bold tracking-wider">
+                                {milestone.badge}
+                              </span>
+                              <div className="p-1 rounded-md bg-white border border-emerald-200 shadow-xs">
+                                {milestone.icon}
+                              </div>
+                            </div>
+
+                            <h3 className="font-heading font-bold text-base sm:text-lg text-slate-950">
+                              {milestone.title}
+                            </h3>
+
+                            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+                              {milestone.text}
+                            </p>
+                          </div>
+                        </div>
+
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
-
               </div>
             </div>
           </FadeIn>
