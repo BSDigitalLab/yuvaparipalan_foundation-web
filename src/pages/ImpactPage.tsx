@@ -1,7 +1,7 @@
 import React from 'react';
 import { SEOHead } from '../components/common/SEOHead';
 import { ImpactCounter } from '../components/sections/ImpactCounter';
-import { SuccessStories } from '../components/sections/SuccessStories';
+import { ExpertVoice } from '../components/sections/ExpertVoice';
 import { FadeIn } from '../components/motion/FadeIn';
 import { Sparkles } from 'lucide-react';
 
@@ -49,7 +49,7 @@ export const ImpactPage: React.FC = () => {
           <ImpactCounter />
 
           <div className="pt-4">
-            <SuccessStories />
+            <ExpertVoice />
           </div>
 
         </div>

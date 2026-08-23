@@ -5,7 +5,7 @@ import { FlagshipPrograms } from '../components/sections/FlagshipPrograms';
 import { ImpactCounter } from '../components/sections/ImpactCounter';
 import { MissionVision } from '../components/sections/MissionVision';
 import { FocusAreas } from '../components/sections/FocusAreas';
-import { SuccessStories } from '../components/sections/SuccessStories';
+import { ExpertVoice } from '../components/sections/ExpertVoice';
 import { GalleryTeaser } from '../components/sections/GalleryTeaser';
 import { JoinCTA } from '../components/sections/JoinCTA';
 
@@ -22,7 +22,7 @@ export const HomePage: React.FC = () => {
         <ImpactCounter />
         <MissionVision />
         <FocusAreas />
-        <SuccessStories />
+        <ExpertVoice />
         <GalleryTeaser />
         <JoinCTA />
       </main>

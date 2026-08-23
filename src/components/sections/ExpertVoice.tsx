@@ -12,7 +12,7 @@ const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export const SuccessStories: React.FC = () => {
+export const ExpertVoice: React.FC = () => {
   const [activeVideoIndex, setActiveVideoIndex] = useState(0);
   const [modalVideo, setModalVideo] = useState<IndustryExpertVideo | null>(null);
 
