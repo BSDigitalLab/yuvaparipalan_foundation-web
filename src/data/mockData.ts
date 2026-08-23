@@ -248,7 +248,7 @@ export const TEAM_MEMBERS: Leader[] = [
     organization: 'Former ADG BSF',
     category: 'mentor',
     bio: 'Former Additional Director General of Border Security Force (BSF). Guiding Yuvaparipalan’s national volunteer movement & leadership academy.',
-    avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop',
+    avatarUrl: '/team/PK_Mishra.png',
     featured: true,
   },
   {
@@ -258,7 +258,7 @@ export const TEAM_MEMBERS: Leader[] = [
     location: 'Kannur',
     category: 'patron',
     bio: 'Renowned philanthropist and community leader championing accessible education and rural youth empowerment.',
-    avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=600&auto=format&fit=crop',
+    avatarUrl: '/team/Abdul_Rahman_Haji.png',
     featured: true,
   },
   {
@@ -268,7 +268,7 @@ export const TEAM_MEMBERS: Leader[] = [
     location: 'Palakkad',
     category: 'executive',
     bio: 'Leading strategic execution of state-wide scholarship and youth mentoring drives.',
-    avatarUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=600&auto=format&fit=crop',
+    avatarUrl: '/team/Manoj_Rohini.png',
     featured: true,
   },
   {
@@ -278,7 +278,7 @@ export const TEAM_MEMBERS: Leader[] = [
     location: 'Palakkad',
     category: 'executive',
     bio: 'Spearheading strategic outreach, institutional partnerships, and brand narrative.',
-    avatarUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=600&auto=format&fit=crop',
+    avatarUrl: '/team/Manikandan_P.png',
     featured: true,
   },
   {
@@ -288,7 +288,7 @@ export const TEAM_MEMBERS: Leader[] = [
     location: 'Ernakulam',
     category: 'executive',
     bio: 'Architecting digital learning platforms, AI literacy missions, and tech infrastructure.',
-    avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop',
+    avatarUrl: '/team/Rashid.png',
   },
   {
     id: 'arun-mohan',
@@ -297,7 +297,7 @@ export const TEAM_MEMBERS: Leader[] = [
     location: 'Kollam',
     category: 'executive',
     bio: 'Fostering CSR collaborations and strategic industry alliances.',
-    avatarUrl: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=600&auto=format&fit=crop',
+    avatarUrl: '/team/Arun_Mohan.png',
   },
   {
     id: 'nisha',
