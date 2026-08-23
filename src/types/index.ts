@@ -73,6 +73,20 @@ export interface Testimonial {
   impactAchieved: string;
 }
 
+export interface IndustryExpertVideo {
+  id: string;
+  name: string;
+  role: string;
+  location: string;
+  title: string;
+  youtubeId: string;
+  youtubeUrl: string;
+  thumbnailUrl?: string;
+  avatarUrl: string;
+  category: string;
+  duration?: string;
+}
+
 export interface CMSNewsArticle {
   id: string;
   slug: string;

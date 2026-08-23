@@ -1,4 +1,4 @@
-import { Program, Leader, FocusArea, ImpactMetric, SDGGoal, GalleryItem, Testimonial, CMSNewsArticle } from '../types';
+import { Program, Leader, FocusArea, ImpactMetric, SDGGoal, GalleryItem, Testimonial, IndustryExpertVideo, CMSNewsArticle } from '../types';
 
 export const IMPACT_METRICS: ImpactMetric[] = [
   {
@@ -598,4 +598,79 @@ export const CMS_NEWS_ARTICLES: CMSNewsArticle[] = [
     category: 'Innovation',
     coverImage: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1000&auto=format&fit=crop'
   }
+];
+
+export const INDUSTRY_EXPERT_VIDEOS: IndustryExpertVideo[] = [
+  {
+    id: 'vid-1',
+    name: 'Dr. Arun Oommen',
+    role: 'Senior Neurosurgeon',
+    location: 'Ernakulam',
+    title: 'Empowering Youth Through Medical & Mental Resilience',
+    youtubeId: 'L_LUpnjgPso',
+    youtubeUrl: 'https://www.youtube.com/watch?v=L_LUpnjgPso',
+    avatarUrl: '/team/biju_sivanand.jpg',
+    category: 'Healthcare & Brain Resilience',
+    duration: '04:15',
+  },
+  {
+    id: 'vid-2',
+    name: 'Dr. Dinakaran Gopalan',
+    role: 'Senior Psychologist',
+    location: 'Pathanamthitta',
+    title: 'Psychological Well-being & Youth Emotional Counseling',
+    youtubeId: 'tgbNymZ7vqY',
+    youtubeUrl: 'https://www.youtube.com/watch?v=tgbNymZ7vqY',
+    avatarUrl: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=300&auto=format&fit=crop',
+    category: 'Psychology & Mentorship',
+    duration: '05:30',
+  },
+  {
+    id: 'vid-3',
+    name: 'P.K. Mishra',
+    role: 'Former ADG BSF & Chief Mentor',
+    location: 'New Delhi',
+    title: 'Leadership, Discipline & National Character Building',
+    youtubeId: 'LXb3EKWsInQ',
+    youtubeUrl: 'https://www.youtube.com/watch?v=LXb3EKWsInQ',
+    avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=300&auto=format&fit=crop',
+    category: 'National Leadership',
+    duration: '06:10',
+  },
+  {
+    id: 'vid-4',
+    name: 'Ashok P Das',
+    role: 'Corporate Business Strategist & MSME Mentor',
+    location: 'Palakkad',
+    title: 'Innovation & Micro-Entrepreneurship Roadmap for India',
+    youtubeId: '3JZ_D3ELwOQ',
+    youtubeUrl: 'https://www.youtube.com/watch?v=3JZ_D3ELwOQ',
+    avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=300&auto=format&fit=crop',
+    category: 'Corporate Strategy',
+    duration: '03:45',
+  },
+  {
+    id: 'vid-5',
+    name: 'Prajod P Raj',
+    role: 'Chief Editor, Business Insight Magazine',
+    location: 'Thiruvananthapuram',
+    title: 'Media, AI Skill Acquisition & Career Positioning for 2035',
+    youtubeId: 'kJQP7kiw5Fk',
+    youtubeUrl: 'https://www.youtube.com/watch?v=kJQP7kiw5Fk',
+    avatarUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=300&auto=format&fit=crop',
+    category: 'Media & Innovation',
+    duration: '04:50',
+  },
+  {
+    id: 'vid-6',
+    name: 'Kareem Pannithadam',
+    role: 'Social Activist & Philanthropist',
+    location: 'Thrissur',
+    title: 'Grassroots Community Action & Educational Grants',
+    youtubeId: 'fJ9rUzIMcZQ',
+    youtubeUrl: 'https://www.youtube.com/watch?v=fJ9rUzIMcZQ',
+    avatarUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=300&auto=format&fit=crop',
+    category: 'Community Empowerment',
+    duration: '05:05',
+  },
 ];

@@ -1,56 +1,157 @@
-import React from 'react';
-import { TESTIMONIALS } from '../../data/mockData';
+import React, { useState } from 'react';
+import { INDUSTRY_EXPERT_VIDEOS } from '../../data/mockData';
+import { IndustryExpertVideo } from '../../types';
 import { FadeIn } from '../motion/FadeIn';
-import { Quote, Award } from 'lucide-react';
+import { Play, ChevronLeft, ChevronRight, MapPin, Sparkles, X, Volume2 } from 'lucide-react';
 
 export const SuccessStories: React.FC = () => {
+  const [activeVideoIndex, setActiveVideoIndex] = useState(0);
+  const [modalVideo, setModalVideo] = useState<IndustryExpertVideo | null>(null);
+
+  // Group videos into sets of 3 for desktop 3-slide row navigation
+  const itemsPerPage = 3;
+  const maxPages = Math.ceil(INDUSTRY_EXPERT_VIDEOS.length / itemsPerPage);
+
+  const handlePrev = () => {
+    setActiveVideoIndex((prev) => (prev === 0 ? maxPages - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setActiveVideoIndex((prev) => (prev === maxPages - 1 ? 0 : prev + 1));
+  };
+
+  const visibleVideos = INDUSTRY_EXPERT_VIDEOS.slice(
+    activeVideoIndex * itemsPerPage,
+    activeVideoIndex * itemsPerPage + itemsPerPage
+  );
+
   return (
-    <section className="py-24 bg-white border-t border-emerald-900/10 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 sm:py-24 bg-[#fafaf7] border-t border-emerald-900/10 relative overflow-hidden">
+      {/* Background Ambient Radial Glow */}
+      <div 
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[750px] h-[450px] pointer-events-none opacity-20"
+        style={{
+          background: 'radial-gradient(circle, rgba(21, 128, 61, 0.3) 0%, rgba(16, 185, 129, 0.08) 50%, transparent 80%)',
+          filter: 'blur(75px)',
+        }}
+      />
+
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10 space-y-12">
+        
+        {/* Section Header: "Voice of Industry Experts" + Carousel Navigation Controls */}
         <FadeIn direction="up">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <span className="text-xs font-mono font-semibold tracking-widest text-emerald-900 uppercase bg-emerald-100 px-3 py-1 rounded-full border border-emerald-300">
-              Grassroots Impact
-            </span>
-            <h2 className="font-heading text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-              Real Lives, Real Transformations
-            </h2>
-            <p className="text-slate-600 text-sm sm:text-base">
-              Hear directly from scholarship recipients, Shepreneur founders, and student volunteers transformed through Yuvaparipalan.
-            </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-4 border-b border-emerald-900/10 text-left">
+            <div className="space-y-2 max-w-3xl">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-950 border border-emerald-300 text-xs font-mono font-bold uppercase tracking-wider shadow-sm">
+                <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
+                <span>Mentorship Perspectives & Video Insights</span>
+              </div>
+
+              <h2 className="font-heading text-3xl sm:text-5xl font-black text-slate-950 tracking-tight flex items-center gap-3 pt-1">
+                <span className="relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-1.5 after:bg-[#15803d]">
+                  VOICE OF
+                </span>
+                <span className="text-[#15803d]">INDUSTRY EXPERTS</span>
+              </h2>
+
+              <p className="text-slate-700 text-sm sm:text-base font-semibold leading-relaxed">
+                Curated video perspectives, mentorship guidance, and strategic endorsements from senior neurosurgeons, corporate visionaries, and social leaders.
+              </p>
+            </div>
+
+            {/* Slider Navigation Buttons (3-Slide Set Navigation) */}
+            <div className="flex items-center gap-3 shrink-0">
+              <span className="text-xs font-mono font-bold text-slate-500 bg-white px-3 py-1.5 rounded-full border border-slate-200 shadow-sm">
+                0{activeVideoIndex + 1} / 0{maxPages}
+              </span>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={handlePrev}
+                  aria-label="Previous videos"
+                  className="p-3 rounded-2xl bg-white border border-emerald-900/15 text-slate-800 hover:text-emerald-900 hover:bg-emerald-50 hover:border-emerald-500 shadow-sm transition-all duration-200 focus:outline-none active:scale-95"
+                >
+                  <ChevronLeft className="w-5 h-5 text-emerald-800" />
+                </button>
+                <button
+                  onClick={handleNext}
+                  aria-label="Next videos"
+                  className="p-3 rounded-2xl bg-white border border-emerald-900/15 text-slate-800 hover:text-emerald-900 hover:bg-emerald-50 hover:border-emerald-500 shadow-sm transition-all duration-200 focus:outline-none active:scale-95"
+                >
+                  <ChevronRight className="w-5 h-5 text-emerald-800" />
+                </button>
+              </div>
+            </div>
           </div>
         </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {TESTIMONIALS.map((t, index) => (
-            <FadeIn key={t.id} direction="up" delay={index * 0.1}>
-              <div className="p-8 rounded-3xl bg-[#fafaf7] border border-emerald-900/10 hover:border-emerald-700/40 transition-all duration-300 flex flex-col justify-between h-full relative overflow-hidden shadow-sm hover:shadow-md group">
-                <Quote className="w-10 h-10 text-emerald-800/10 absolute top-6 right-6" />
+        {/* 3 Videos Row Grid Set */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {visibleVideos.map((video, index) => (
+            <FadeIn key={video.id} direction="up" delay={index * 0.08}>
+              <div
+                onClick={() => setModalVideo(video)}
+                className="group cursor-pointer rounded-3xl bg-white border border-emerald-900/15 hover:border-emerald-700/50 shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden h-full text-left"
+              >
+                {/* YouTube Video Poster Frame with Custom Play Button */}
+                <div className="relative aspect-video w-full overflow-hidden bg-slate-950">
+                  <img
+                    src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
+                    alt={video.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+                  />
 
-                <div className="space-y-4 relative z-10">
-                  <span className="text-[11px] font-mono font-bold text-emerald-900 bg-emerald-100 px-2.5 py-1 rounded-full border border-emerald-200 inline-block">
-                    {t.program}
-                  </span>
+                  {/* Soft Gradient Mask Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
 
-                  <p className="text-sm text-slate-700 leading-relaxed italic font-medium">
-                    "{t.quote}"
-                  </p>
+                  {/* Duration Tag */}
+                  {video.duration && (
+                    <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-slate-950/85 text-white text-[11px] font-mono font-bold border border-white/20 backdrop-blur-sm flex items-center gap-1 shadow-sm">
+                      <Volume2 className="w-3 h-3 text-emerald-400" />
+                      <span>{video.duration}</span>
+                    </div>
+                  )}
+
+                  {/* Category Pill */}
+                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-emerald-950/90 text-emerald-300 text-[10px] font-mono font-bold uppercase tracking-wider border border-emerald-500/40 backdrop-blur-sm shadow-sm">
+                    {video.category}
+                  </div>
+
+                  {/* Centered Glowing Play Button Overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#15803d] text-white flex items-center justify-center shadow-[0_0_25px_rgba(21,128,61,0.6)] group-hover:scale-110 group-hover:bg-emerald-600 transition-all duration-300 ring-4 ring-white/30">
+                      <Play className="w-6 h-6 sm:w-7 sm:h-7 text-white fill-white ml-1" />
+                    </div>
+                  </div>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-slate-200 flex items-center gap-4">
-                  <img
-                    src={t.avatarUrl}
-                    alt={t.name}
-                    className="w-12 h-12 rounded-full object-cover border border-emerald-300 shrink-0"
-                  />
-                  <div>
-                    <h4 className="font-heading font-bold text-slate-900 text-sm group-hover:text-emerald-800 transition-colors">
-                      {t.name}
-                    </h4>
-                    <p className="text-xs text-slate-500 font-medium">{t.role} ({t.location})</p>
-                    <div className="flex items-center gap-1 text-[11px] text-amber-800 font-mono font-bold mt-1">
-                      <Award className="w-3 h-3 text-amber-700" />
-                      <span>{t.impactAchieved}</span>
+                {/* Card Content & Speaker Details */}
+                <div className="p-5 sm:p-6 space-y-4 flex-1 flex flex-col justify-between">
+                  <div className="space-y-2">
+                    <h3 className="font-heading font-extrabold text-base sm:text-lg text-slate-950 group-hover:text-[#15803d] transition-colors leading-snug line-clamp-2">
+                      "{video.title}"
+                    </h3>
+                  </div>
+
+                  {/* Speaker Profile Details */}
+                  <div className="pt-4 border-t border-slate-100 flex items-center gap-3.5">
+                    <img
+                      src={video.avatarUrl}
+                      alt={video.name}
+                      loading="lazy"
+                      className="w-12 h-12 rounded-2xl object-cover border-2 border-emerald-600/40 shadow-sm shrink-0"
+                    />
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-heading font-extrabold text-sm text-slate-950 truncate">
+                        {video.name}
+                      </h4>
+                      <p className="text-xs font-extrabold text-emerald-800 truncate">
+                        {video.role}
+                      </p>
+                      <div className="flex items-center gap-1 text-[11px] font-mono font-semibold text-slate-500 pt-0.5">
+                        <MapPin className="w-3 h-3 text-amber-600 shrink-0" />
+                        <span>{video.location}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -58,7 +159,75 @@ export const SuccessStories: React.FC = () => {
             </FadeIn>
           ))}
         </div>
+
+        {/* Carousel Pagination Dots */}
+        <div className="flex items-center justify-center gap-2 pt-2">
+          {Array.from({ length: maxPages }).map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setActiveVideoIndex(idx)}
+              className={`h-2.5 rounded-full transition-all duration-300 ${
+                activeVideoIndex === idx
+                  ? 'w-8 bg-[#15803d]'
+                  : 'w-2.5 bg-slate-300 hover:bg-emerald-600/50'
+              }`}
+              aria-label={`Go to slide set ${idx + 1}`}
+            />
+          ))}
+        </div>
+
       </div>
+
+      {/* Broadcast Quality Interactive YouTube Player Modal */}
+      {modalVideo && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md animate-fadeIn">
+          <div className="max-w-4xl w-full bg-slate-900 border border-emerald-500/30 rounded-3xl p-4 sm:p-6 space-y-4 shadow-2xl relative text-left">
+            
+            {/* Modal Header */}
+            <div className="flex items-start justify-between gap-4 border-b border-slate-800 pb-3">
+              <div className="flex items-center gap-3">
+                <img
+                  src={modalVideo.avatarUrl}
+                  alt={modalVideo.name}
+                  className="w-10 h-10 rounded-xl object-cover border border-emerald-500"
+                />
+                <div>
+                  <h3 className="font-heading font-extrabold text-base sm:text-lg text-white">
+                    {modalVideo.name}
+                  </h3>
+                  <p className="text-xs text-emerald-400 font-bold">{modalVideo.role} ({modalVideo.location})</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setModalVideo(null)}
+                className="p-2 rounded-full bg-slate-800 text-slate-300 hover:text-white hover:bg-emerald-800 transition-colors"
+                aria-label="Close video player"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* 16:9 YouTube Embed Iframe */}
+            <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-black border border-slate-800 shadow-inner">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${modalVideo.youtubeId}?autoplay=1&rel=0`}
+                title={modalVideo.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full border-0"
+              />
+            </div>
+
+            {/* Modal Footer Title */}
+            <div className="pt-2 flex items-center justify-between text-xs text-slate-400 font-medium">
+              <span className="text-slate-200 font-bold truncate pr-4">{modalVideo.title}</span>
+              <span className="font-mono text-emerald-400 shrink-0">{modalVideo.category}</span>
+            </div>
+
+          </div>
+        </div>
+      )}
+
     </section>
   );
 };
