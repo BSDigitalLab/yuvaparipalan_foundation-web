@@ -538,7 +538,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     date: '2025-11-15',
     imageUrl: '/events/yp_vd_satheeshan.png',
     location: 'Thiruvananthapuram, Kerala',
-    description: 'Yuvaparipalan Foundation movement flag officially unveiled by the Chief Minister of Kerala.'
+    description: "The Yuvaparipalan Foundation Movement Flag was officially unveiled by the Hon'ble Chief Minister of Kerala, marking a significant milestone in the Foundation's mission to empower and uplift the youth of the State. This symbolic moment reflects a shared commitment towards nurturing future generations and advancing a vision of social progress, opportunity, and inclusive development for Kerala's youth."
   },
   {
     id: 'g2',
