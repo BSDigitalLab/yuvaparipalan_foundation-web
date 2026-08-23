@@ -29,13 +29,13 @@ export const LeadershipPage: React.FC = () => {
           
           {/* Header Banner */}
           <FadeIn direction="up">
-            <div className="text-center max-w-2xl mx-auto space-y-2.5">
+            <div className="text-center max-w-4xl mx-auto space-y-2.5">
               <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100/90 text-emerald-950 border border-emerald-300 text-[11px] font-mono font-bold uppercase tracking-wider shadow-sm">
                 <Sparkles className="w-3 h-3 text-emerald-700" />
                 <span>Leadership & Governance</span>
               </div>
 
-              <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight leading-tight">
+              <h1 className="font-heading text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-slate-950 tracking-tight leading-tight whitespace-normal sm:whitespace-nowrap">
                 Our Team, Patrons &{' '}
                 <span className="relative inline-block text-[#15803d] pb-0.5 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-1 after:bg-[#15803d] after:rounded-full">
                   Advisory Council
