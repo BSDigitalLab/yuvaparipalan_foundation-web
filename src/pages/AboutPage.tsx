@@ -3,7 +3,7 @@ import { SEOHead } from '../components/common/SEOHead';
 import { FadeIn } from '../components/motion/FadeIn';
 import {
   ShieldCheck, Heart, Sparkles, Award, Lightbulb, Users, Leaf, Globe,
-  Calendar, Building2, Target, Compass, ArrowRight, Shield
+  Calendar, Building2, Target, Compass, ArrowRight
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -102,47 +102,11 @@ export const AboutPage: React.FC = () => {
             </div>
           </FadeIn>
 
-          {/* Expanded 3-Column Metrics Dashboard Bar with Vertical Icon Alignment & 3 Text Lines */}
-          <FadeIn direction="up">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-5xl mx-auto">
-              <div className="p-5 rounded-2xl bg-white border border-emerald-900/10 shadow-sm hover:shadow-md transition-all flex items-center gap-4 group">
-                <div className="p-3 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 group-hover:scale-105 transition-transform shrink-0">
-                  <Calendar className="w-6 h-6 text-[#15803d]" />
-                </div>
-                <div className="text-left space-y-0.5 flex-1 min-w-0">
-                  <span className="text-[11px] text-slate-500 font-mono font-bold uppercase tracking-wider block">Established</span>
-                  <strong className="text-xl sm:text-2xl font-heading font-extrabold text-slate-950 block leading-tight truncate">2016</strong>
-                  <span className="text-xs text-slate-600 font-medium block truncate">Palana Trust Genesis</span>
-                </div>
-              </div>
-
-              <div className="p-5 rounded-2xl bg-white border border-emerald-900/10 shadow-sm hover:shadow-md transition-all flex items-center gap-4 group">
-                <div className="p-3 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 group-hover:scale-105 transition-transform shrink-0">
-                  <Building2 className="w-6 h-6 text-[#15803d]" />
-                </div>
-                <div className="text-left space-y-0.5 flex-1 min-w-0">
-                  <span className="text-[11px] text-slate-500 font-mono font-bold uppercase tracking-wider block">Legal Structure</span>
-                  <strong className="text-xl sm:text-2xl font-heading font-extrabold text-slate-950 block leading-tight truncate">Section 8 NGO</strong>
-                  <span className="text-xs text-slate-600 font-medium block truncate">Companies Act, 2013</span>
-                </div>
-              </div>
-
-              <div className="p-5 rounded-2xl bg-white border border-emerald-900/10 shadow-sm hover:shadow-md transition-all flex items-center gap-4 group">
-                <div className="p-3 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 group-hover:scale-105 transition-transform shrink-0">
-                  <Target className="w-6 h-6 text-[#15803d]" />
-                </div>
-                <div className="text-left space-y-0.5 flex-1 min-w-0">
-                  <span className="text-[11px] text-slate-500 font-mono font-bold uppercase tracking-wider block">Impact Goal 2035</span>
-                  <strong className="text-xl sm:text-2xl font-heading font-extrabold text-slate-950 block leading-tight truncate">10M Empowered</strong>
-                  <span className="text-xs text-slate-600 font-medium block truncate">Nationwide Youth Target</span>
-                </div>
-              </div>
-            </div>
-          </FadeIn>
-
-          {/* Alternating Left and Right Vertical Milestone Line Timeline Section */}
+          {/* Historical Milestones Container with Merged Top 3 Metrics Cards */}
           <FadeIn direction="up">
             <div className="p-6 sm:p-10 rounded-3xl bg-white border border-emerald-900/15 shadow-md relative overflow-hidden space-y-8">
+              
+              {/* 1. Main Head Content */}
               <div className="text-center max-w-2xl mx-auto space-y-2">
                 <span className="text-xs font-mono font-bold text-[#15803d] uppercase tracking-widest bg-emerald-100 px-3 py-1 rounded-full border border-emerald-300">
                   Historical Milestones
@@ -155,7 +119,43 @@ export const AboutPage: React.FC = () => {
                 </p>
               </div>
 
-              {/* Timeline Staging Grid Container */}
+              {/* 2. Merged 3-Column Metrics Dashboard Bar (Under Main Head Content, Above Timeline) */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 pb-2 border-y border-slate-100">
+                <div className="p-4 rounded-2xl bg-[#f8faf8] border border-emerald-900/10 shadow-xs flex items-center gap-3.5 group">
+                  <div className="p-2.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 group-hover:scale-105 transition-transform shrink-0">
+                    <Calendar className="w-5 h-5 text-[#15803d]" />
+                  </div>
+                  <div className="text-left space-y-0.5 flex-1 min-w-0">
+                    <span className="text-[10px] text-slate-500 font-mono font-bold uppercase tracking-wider block">Established</span>
+                    <strong className="text-lg sm:text-xl font-heading font-extrabold text-slate-950 block leading-tight truncate">2016</strong>
+                    <span className="text-[11px] text-slate-600 font-medium block truncate">Palana Trust Genesis</span>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-[#f8faf8] border border-emerald-900/10 shadow-xs flex items-center gap-3.5 group">
+                  <div className="p-2.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 group-hover:scale-105 transition-transform shrink-0">
+                    <Building2 className="w-5 h-5 text-[#15803d]" />
+                  </div>
+                  <div className="text-left space-y-0.5 flex-1 min-w-0">
+                    <span className="text-[10px] text-slate-500 font-mono font-bold uppercase tracking-wider block">Legal Structure</span>
+                    <strong className="text-lg sm:text-xl font-heading font-extrabold text-slate-950 block leading-tight truncate">Section 8 NGO</strong>
+                    <span className="text-[11px] text-slate-600 font-medium block truncate">Companies Act, 2013</span>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-[#f8faf8] border border-emerald-900/10 shadow-xs flex items-center gap-3.5 group">
+                  <div className="p-2.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 group-hover:scale-105 transition-transform shrink-0">
+                    <Target className="w-5 h-5 text-[#15803d]" />
+                  </div>
+                  <div className="text-left space-y-0.5 flex-1 min-w-0">
+                    <span className="text-[10px] text-slate-500 font-mono font-bold uppercase tracking-wider block">Impact Goal 2035</span>
+                    <strong className="text-lg sm:text-xl font-heading font-extrabold text-slate-950 block leading-tight truncate">10M Empowered</strong>
+                    <span className="text-[11px] text-slate-600 font-medium block truncate">Nationwide Youth Target</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 3. Alternating Left & Right Vertical Milestone Timeline Staging Grid Container */}
               <div className="relative py-4">
                 {/* Central Vertical Connector Line (Desktop) */}
                 <div className="hidden lg:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-1 bg-gradient-to-b from-[#15803d] via-emerald-400 to-emerald-200 rounded-full" />
@@ -214,7 +214,7 @@ export const AboutPage: React.FC = () => {
             </div>
           </FadeIn>
 
-          {/* Compact 7 Core Values Grid (Icon on Left of Card Title, Low Profile Height) */}
+          {/* Compact 7 Core Values Grid */}
           <div className="space-y-4">
             <FadeIn direction="up">
               <div className="text-left space-y-1 border-b border-emerald-900/10 pb-3">
