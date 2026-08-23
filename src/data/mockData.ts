@@ -547,7 +547,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     date: '2025-10-20',
     imageUrl: '/events/yp_ramesh_chennithala.png',
     location: 'Thrissur, Kerala',
-    description: 'Handing over memento to Ramesh Chennithala, Minister for Home Affairs and Vigilance of Kerala.'
+    description: "As a mark of our sincere appreciation, we are honoured to present this memento to Shri Ramesh Chennithala in recognition of his distinguished leadership and dedicated service in strengthening Kerala's public safety, governance, and citizen welfare initiatives. His unwavering commitment to transparent administration, law and order, and the well-being of the people has left a lasting impact on the State and continues to inspire public service."
   },
   {
     id: 'g3',
