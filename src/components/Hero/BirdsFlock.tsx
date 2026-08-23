@@ -3,22 +3,26 @@ import { motion } from 'framer-motion';
 
 // Bird SVG with realistic animated wing flapping
 const FlappingBird: React.FC<{ delay?: number; className?: string }> = ({ delay = 0, className = "text-slate-800/85" }) => {
+  const [wingFlap, setWingFlap] = React.useState(false);
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      const interval = setInterval(() => {
+        setWingFlap((prev) => !prev);
+      }, 140);
+      return () => clearInterval(interval);
+    }, delay * 1000);
+    return () => clearTimeout(timer);
+  }, [delay]);
+
+  const pathD = wingFlap
+    ? "M 0 3 Q 8 14 16 5 Q 24 14 32 3 Q 22 5 16 6 Q 10 5 0 3 Z"
+    : "M 0 10 Q 8 -10 16 3 Q 24 -10 32 10 Q 22 3 16 6 Q 10 3 0 10 Z";
+
   return (
     <svg className="w-7 h-7 drop-shadow-sm" viewBox="0 0 32 20" fill="currentColor">
-      <motion.path
-        animate={{
-          d: [
-            "M 0 10 Q 8 -10 16 3 Q 24 -10 32 10 Q 22 3 16 6 Q 10 3 0 10 Z", // Wings Up
-            "M 0 3 Q 8 14 16 5 Q 24 14 32 3 Q 22 5 16 6 Q 10 5 0 3 Z",   // Wings Down
-            "M 0 10 Q 8 -10 16 3 Q 24 -10 32 10 Q 22 3 16 6 Q 10 3 0 10 Z", // Wings Up
-          ],
-        }}
-        transition={{
-          duration: 0.28,
-          repeat: Infinity,
-          ease: 'easeInOut',
-          delay: delay,
-        }}
+      <path
+        d={pathD}
         className={className}
       />
     </svg>

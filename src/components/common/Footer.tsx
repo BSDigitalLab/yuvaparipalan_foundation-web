@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Globe, Heart, ShieldCheck, ArrowRight } from 'lucide-react';
+import { MapPin, Phone, Mail, Globe, Heart, ArrowRight } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
@@ -23,8 +23,6 @@ export const Footer: React.FC = () => {
             <p className="text-sm text-emerald-200/90 leading-relaxed italic border-l-2 border-emerald-500/40 pl-3">
               "Every Youth is a Possibility. Every Possibility Creates Change. Every Change Builds a Better India."
             </p>
-
-
           </div>
 
           {/* Column 2: Flagship Missions */}
@@ -112,15 +110,18 @@ export const Footer: React.FC = () => {
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-emerald-900/60 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-emerald-300/70">
+      {/* Bottom Bar: Positioned Extreme Left and Right of the Page */}
+      <div className="pt-8 border-t border-emerald-900/60 w-full max-w-full px-6 sm:px-12 lg:px-16 relative z-10">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-emerald-300/70">
           <p>© {new Date().getFullYear()} Yuvaparipalan Foundation. All rights reserved. Non-profit Section 8 Organization.</p>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
             <span className="flex items-center gap-1 text-emerald-200">
-              Built with <Heart className="w-3.5 h-3.5 text-rose-400 fill-rose-400" /> for Youth Empowerment in India
+              Build with <Heart className="w-3.5 h-3.5 text-rose-400 fill-rose-400" /> by Branding Sparrow
             </span>
-            <Link to="/contact" className="hover:text-white">Privacy & Terms</Link>
+            <span className="text-emerald-800/80">|</span>
+            <Link to="/contact" className="hover:text-white transition-colors">Privacy & Terms</Link>
           </div>
         </div>
       </div>
