@@ -46,9 +46,9 @@ export const ExpertVoice: React.FC = () => {
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10 space-y-12">
         
-        {/* Section Header: "Voice of Industry Experts" + Carousel Navigation Controls */}
+        {/* Section Header: "Voice of Industry Experts" */}
         <FadeIn direction="up">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-4 border-b border-emerald-900/10 text-left">
+          <div className="pb-4 border-b border-emerald-900/10 text-left">
             <div className="space-y-2 max-w-3xl">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-950 border border-emerald-300 text-xs font-mono font-bold uppercase tracking-wider shadow-sm">
                 <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
@@ -65,29 +65,6 @@ export const ExpertVoice: React.FC = () => {
               <p className="text-slate-700 text-sm sm:text-base font-semibold leading-relaxed">
                 Curated video perspectives, mentorship guidance, and strategic endorsements from senior neurosurgeons, corporate visionaries, and social leaders.
               </p>
-            </div>
-
-            {/* Slider Navigation Buttons (3-Slide Set Navigation) */}
-            <div className="flex items-center gap-3 shrink-0">
-              <span className="text-xs font-mono font-bold text-slate-500 bg-white px-3 py-1.5 rounded-full border border-slate-200 shadow-sm">
-                0{activeVideoIndex + 1} / 0{maxPages}
-              </span>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={handlePrev}
-                  aria-label="Previous videos"
-                  className="p-3 rounded-2xl bg-white border border-emerald-900/15 text-slate-800 hover:text-emerald-900 hover:bg-emerald-50 hover:border-emerald-500 shadow-sm transition-all duration-200 focus:outline-none active:scale-95"
-                >
-                  <ChevronLeft className="w-5 h-5 text-emerald-800" />
-                </button>
-                <button
-                  onClick={handleNext}
-                  aria-label="Next videos"
-                  className="p-3 rounded-2xl bg-white border border-emerald-900/15 text-slate-800 hover:text-emerald-900 hover:bg-emerald-50 hover:border-emerald-500 shadow-sm transition-all duration-200 focus:outline-none active:scale-95"
-                >
-                  <ChevronRight className="w-5 h-5 text-emerald-800" />
-                </button>
-              </div>
             </div>
           </div>
         </FadeIn>
@@ -178,21 +155,44 @@ export const ExpertVoice: React.FC = () => {
           })}
         </div>
 
-        {/* Carousel Pagination Dots */}
-        <div className="flex items-center justify-center gap-2 pt-2">
-          {Array.from({ length: maxPages }).map((_, idx) => (
+        {/* Carousel Bottom Slide Controls & Pagination */}
+        <FadeIn direction="up">
+          <div className="flex items-center justify-center gap-3 sm:gap-4 pt-2">
             <button
-              key={idx}
-              onClick={() => setActiveVideoIndex(idx)}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                activeVideoIndex === idx
-                  ? 'w-8 bg-[#15803d]'
-                  : 'w-2.5 bg-slate-300 hover:bg-emerald-600/50'
-              }`}
-              aria-label={`Go to slide set ${idx + 1}`}
-            />
-          ))}
-        </div>
+              onClick={handlePrev}
+              aria-label="Previous videos"
+              className="p-3 rounded-2xl bg-white border border-emerald-900/15 text-slate-800 hover:text-emerald-900 hover:bg-emerald-50 hover:border-emerald-500 shadow-sm transition-all duration-200 focus:outline-none active:scale-95 cursor-pointer"
+            >
+              <ChevronLeft className="w-5 h-5 text-emerald-800" />
+            </button>
+
+            <div className="flex items-center gap-2.5 bg-white px-4 py-2 rounded-full border border-emerald-900/15 shadow-sm">
+              {Array.from({ length: maxPages }).map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveVideoIndex(idx)}
+                  className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                    activeVideoIndex === idx
+                      ? 'w-8 bg-[#15803d]'
+                      : 'w-2.5 bg-slate-300 hover:bg-emerald-600/50'
+                  }`}
+                  aria-label={`Go to slide set ${idx + 1}`}
+                />
+              ))}
+              <span className="text-xs font-mono font-bold text-slate-600 ml-1.5 pl-2.5 border-l border-slate-200">
+                0{activeVideoIndex + 1} / 0{maxPages}
+              </span>
+            </div>
+
+            <button
+              onClick={handleNext}
+              aria-label="Next videos"
+              className="p-3 rounded-2xl bg-white border border-emerald-900/15 text-slate-800 hover:text-emerald-900 hover:bg-emerald-50 hover:border-emerald-500 shadow-sm transition-all duration-200 focus:outline-none active:scale-95 cursor-pointer"
+            >
+              <ChevronRight className="w-5 h-5 text-emerald-800" />
+            </button>
+          </div>
+        </FadeIn>
 
       </div>
 
