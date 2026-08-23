@@ -46,19 +46,24 @@ export const HeroContent: React.FC = () => {
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center p-2 gap-3 rounded-3xl bg-white/35 backdrop-blur-md border border-white/60 shadow-lg w-full sm:w-auto">
           
           {/* Primary CTA Button: Join the Program (#15803d) */}
-          <Link to="/programs" className="w-full sm:w-auto">
+          <a
+            href="https://www.yuvaparipalan.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto"
+          >
             <button className="w-full sm:w-auto h-[48px] sm:h-[50px] bg-[#15803d] hover:bg-[#166534] text-white font-bold text-base px-7 rounded-2xl shadow-md flex items-center justify-center gap-2.5 transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-emerald-700">
               <HeartHandshake className="w-5 h-5 text-emerald-100" />
               <span>Join the Program</span>
               <ArrowRight className="w-5 h-5 text-white" />
             </button>
-          </Link>
+          </a>
 
           <div className="hidden sm:block w-px h-8 bg-slate-400/40" />
 
           {/* Official Google Playstore Badge Image (playstore_google.png) - 100% Width & Height Fit to Button */}
           <a
-            href="https://play.google.com/store"
+            href="https://play.google.com/store/apps/details?id=com.yuvaparipalan.app&pcampaignid=web_share"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center h-[48px] sm:h-[50px] w-[155px] sm:w-[165px] p-0 m-0 border-0 outline-none rounded-2xl overflow-hidden shadow-sm transition-all duration-200 hover:scale-[1.03] focus:outline-none focus:ring-2 focus:ring-emerald-700 shrink-0"
