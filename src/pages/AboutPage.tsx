@@ -9,13 +9,13 @@ import { Link } from 'react-router-dom';
 
 export const AboutPage: React.FC = () => {
   const coreValues = [
-    { id: '01', title: 'Integrity', desc: 'We uphold transparency, ethics, accountability, and trust in everything we do.', icon: <ShieldCheck className="w-5 h-5 text-emerald-800" /> },
-    { id: '02', title: 'Compassion', desc: 'We serve society with empathy, respect, and genuine care for every individual.', icon: <Heart className="w-5 h-5 text-rose-800" /> },
-    { id: '03', title: 'Innovation', desc: 'We embrace new ideas, emerging technologies, and creative solutions for social transformation.', icon: <Lightbulb className="w-5 h-5 text-amber-800" /> },
-    { id: '04', title: 'Inclusiveness', desc: 'We believe every individual deserves equal opportunities irrespective of background, gender, or geography.', icon: <Users className="w-5 h-5 text-blue-800" /> },
-    { id: '05', title: 'Excellence', desc: 'We continuously strive for the highest standards in learning, service delivery, and impact.', icon: <Award className="w-5 h-5 text-purple-800" /> },
-    { id: '06', title: 'Service', desc: 'We believe true leadership begins with selfless service to humanity.', icon: <Sparkles className="w-5 h-5 text-teal-800" /> },
-    { id: '07', title: 'Sustainability', desc: 'We design initiatives that create long-term social, educational, economic, and environmental impact.', icon: <Leaf className="w-5 h-5 text-emerald-800" /> },
+    { id: '01', title: 'Integrity', desc: 'We uphold transparency, ethics, accountability, and trust in everything we do.', icon: <ShieldCheck className="w-4.5 h-4.5 text-emerald-800" /> },
+    { id: '02', title: 'Compassion', desc: 'We serve society with empathy, respect, and genuine care for every individual.', icon: <Heart className="w-4.5 h-4.5 text-rose-800" /> },
+    { id: '03', title: 'Innovation', desc: 'We embrace new ideas, emerging technologies, and creative solutions for social transformation.', icon: <Lightbulb className="w-4.5 h-4.5 text-amber-800" /> },
+    { id: '04', title: 'Inclusiveness', desc: 'We believe every individual deserves equal opportunities irrespective of background, gender, or geography.', icon: <Users className="w-4.5 h-4.5 text-blue-800" /> },
+    { id: '05', title: 'Excellence', desc: 'We continuously strive for the highest standards in learning, service delivery, and impact.', icon: <Award className="w-4.5 h-4.5 text-purple-800" /> },
+    { id: '06', title: 'Service', desc: 'We believe true leadership begins with selfless service to humanity.', icon: <Sparkles className="w-4.5 h-4.5 text-teal-800" /> },
+    { id: '07', title: 'Sustainability', desc: 'We design initiatives that create long-term social, educational, economic, and environmental impact.', icon: <Leaf className="w-4.5 h-4.5 text-emerald-800" /> },
   ];
 
   const sdgBadges = [
@@ -214,7 +214,7 @@ export const AboutPage: React.FC = () => {
             </div>
           </FadeIn>
 
-          {/* Compact 7 Core Values Grid */}
+          {/* Compact 7 Core Values Grid (Icon on Left of Card Title, Low Profile Height) */}
           <div className="space-y-4">
             <FadeIn direction="up">
               <div className="text-left space-y-1 border-b border-emerald-900/10 pb-3">
@@ -228,31 +228,33 @@ export const AboutPage: React.FC = () => {
               </div>
             </FadeIn>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
               {coreValues.map((value) => (
                 <FadeIn key={value.title} direction="up">
-                  <div className="group p-4 rounded-xl bg-white border border-slate-200/80 hover:border-emerald-600/50 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between h-full text-left relative overflow-hidden">
-                    <div className="space-y-2.5">
-                      <div className="flex items-center justify-between">
-                        <div className="p-2 rounded-lg bg-emerald-50 border border-emerald-200 group-hover:bg-emerald-100 transition-colors">
-                          {value.icon}
+                  <div className="group p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/80 hover:border-emerald-600/50 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between h-full text-left relative overflow-hidden">
+                    <div className="space-y-2">
+                      {/* Header Row: Icon + Title on Left, Number Tag on Right */}
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-2 min-w-0">
+                          <div className="p-1.5 rounded-lg bg-emerald-50 border border-emerald-200 group-hover:bg-emerald-100 transition-colors shrink-0">
+                            {value.icon}
+                          </div>
+                          <h3 className="font-heading font-bold text-sm text-slate-950 group-hover:text-emerald-900 transition-colors truncate">
+                            {value.title}
+                          </h3>
                         </div>
-                        <span className="text-[10px] font-mono font-bold text-[#15803d] bg-emerald-100/90 px-2 py-0.5 rounded-full border border-emerald-300">
+                        <span className="text-[10px] font-mono font-bold text-[#15803d] bg-emerald-100/90 px-2 py-0.5 rounded-full border border-emerald-300 shrink-0">
                           {value.id}
                         </span>
                       </div>
 
-                      <div className="space-y-0.5">
-                        <h3 className="font-heading font-bold text-sm text-slate-950 group-hover:text-emerald-900 transition-colors">
-                          {value.title}
-                        </h3>
-                        <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-medium">
-                          {value.desc}
-                        </p>
-                      </div>
+                      {/* Description */}
+                      <p className="text-[11px] text-slate-600 leading-relaxed font-medium pt-0.5">
+                        {value.desc}
+                      </p>
                     </div>
 
-                    <div className="mt-3 pt-1.5 border-t border-slate-100">
+                    <div className="mt-2.5 pt-1 border-t border-slate-100">
                       <div className="h-0.5 w-0 group-hover:w-full bg-gradient-to-r from-emerald-600 via-teal-500 to-amber-500 transition-all duration-300 rounded-full" />
                     </div>
                   </div>
