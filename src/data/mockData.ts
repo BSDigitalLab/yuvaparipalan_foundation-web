@@ -306,7 +306,7 @@ export const TEAM_MEMBERS: Leader[] = [
     location: 'Ernakulam',
     category: 'executive',
     bio: 'Orchestrating state-level summits, scholarship distributions, and youth workshops.',
-    avatarUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop',
+    avatarUrl: '/team/Nisha.png',
   },
   {
     id: 'muhammad-shamseer',
@@ -315,7 +315,7 @@ export const TEAM_MEMBERS: Leader[] = [
     location: 'Kannur',
     category: 'executive',
     bio: 'Directing student psychological counseling and academic guidance operations.',
-    avatarUrl: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=600&auto=format&fit=crop',
+    avatarUrl: '/team/Muhammad_Shamseer.png',
   },
   {
     id: 'abidha',
@@ -324,7 +324,7 @@ export const TEAM_MEMBERS: Leader[] = [
     location: 'Kannur',
     category: 'executive',
     bio: 'Managing talent, volunteer onboarding, and institutional human resources.',
-    avatarUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=600&auto=format&fit=crop',
+    avatarUrl: '/team/Abida.png',
   },
   {
     id: 'vineeth-m',
@@ -333,7 +333,7 @@ export const TEAM_MEMBERS: Leader[] = [
     location: 'Thrissur',
     category: 'executive',
     bio: 'Coordinating high school and college student empowerment programs.',
-    avatarUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=600&auto=format&fit=crop',
+    avatarUrl: '/team/Vineeth_Madhusoodhanan.png',
   },
   {
     id: 'rupesh-kumar',
@@ -342,7 +342,7 @@ export const TEAM_MEMBERS: Leader[] = [
     location: 'Palakkad',
     category: 'executive',
     bio: 'Ensuring financial compliance, transparency, and audit standards.',
-    avatarUrl: 'https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?q=80&w=600&auto=format&fit=crop',
+    avatarUrl: '/team/Rupesh_Kumar.png',
   },
   {
     id: 'vigila',
@@ -351,7 +351,7 @@ export const TEAM_MEMBERS: Leader[] = [
     location: 'Kannur',
     category: 'executive',
     bio: 'Driving grassroot execution for the Shepreneurs initiative.',
-    avatarUrl: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?q=80&w=600&auto=format&fit=crop',
+    avatarUrl: '/team/Vigila.png',
   },
   {
     id: 'laisa-sojan',
@@ -360,7 +360,7 @@ export const TEAM_MEMBERS: Leader[] = [
     location: 'Kannur',
     category: 'executive',
     bio: 'Designing training modules for personal development & leadership.',
-    avatarUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop',
+    avatarUrl: '/team/Laisa_Sojan.png',
   },
 ];
 
