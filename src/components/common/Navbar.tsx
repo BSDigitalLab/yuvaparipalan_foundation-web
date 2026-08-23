@@ -92,12 +92,18 @@ export const Navbar: React.FC = () => {
                 </button>
               </Link>
 
-              <Link to="/programs" id="partner-csr-cta" className="inline-block">
+              <a
+                href="https://www.yuvaparipalan.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                id="partner-csr-cta"
+                className="inline-block"
+              >
                 <button className="bg-[#facc15] hover:bg-[#eab308] text-slate-950 border border-yellow-300/80 font-bold text-xs sm:text-sm px-4.5 py-2 rounded-full flex items-center gap-1.5 transition-all shadow-md hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-amber-500 whitespace-nowrap">
                   <GraduationCap className="w-4 h-4 text-slate-950" />
                   <span>Join Program</span>
                 </button>
-              </Link>
+              </a>
             </div>
 
           </div>
@@ -152,12 +158,17 @@ export const Navbar: React.FC = () => {
                   <span>Be a Volunteer</span>
                 </button>
               </Link>
-              <Link to="/programs" className="block w-full">
+              <a
+                href="https://www.yuvaparipalan.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full"
+              >
                 <button className="w-full justify-center bg-[#facc15] hover:bg-[#eab308] text-slate-950 border border-yellow-300/80 font-bold text-sm py-3 px-4 rounded-xl flex items-center gap-2 transition-all shadow-md">
                   <GraduationCap className="w-4 h-4 text-slate-950" />
                   <span>Join Program</span>
                 </button>
-              </Link>
+              </a>
             </div>
           </div>
         </div>
