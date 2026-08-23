@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { VolunteerFormData } from '../types';
+import { sendSubmissionEmail } from '../services/emailService';
 
 interface VolunteerStore {
   currentStep: number;
@@ -44,8 +45,7 @@ export const useVolunteerStore = create<VolunteerStore>((set, get) => ({
 
   submitVolunteerForm: async (fullData) => {
     set({ isSubmitting: true });
-    // Simulate async API POST to server / CMS backend
-    await new Promise((resolve) => setTimeout(resolve, 1200));
+    await sendSubmissionEmail({ formType: 'volunteer', formData: fullData });
     set({
       formData: fullData,
       isSubmitting: false,

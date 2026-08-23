@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { PartnerFormData } from '../types';
+import { sendSubmissionEmail } from '../services/emailService';
 
 interface PartnerStore {
   formData: Partial<PartnerFormData>;
@@ -36,7 +37,7 @@ export const usePartnerStore = create<PartnerStore>((set) => ({
 
   submitPartnerForm: async (fullData) => {
     set({ isSubmitting: true });
-    await new Promise((resolve) => setTimeout(resolve, 1200));
+    await sendSubmissionEmail({ formType: 'partner', formData: fullData });
     set({
       formData: fullData,
       isSubmitting: false,

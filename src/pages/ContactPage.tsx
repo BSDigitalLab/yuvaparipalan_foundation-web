@@ -7,6 +7,7 @@ import { FadeIn } from '../components/motion/FadeIn';
 import { Button } from '../components/ui/Button';
 import { MapPin, Phone, Mail, Send, CheckCircle2, Clock, Sparkles } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { sendSubmissionEmail } from '../services/emailService';
 
 const contactSchema = z.object({
   fullName: z.string().min(2, 'Name must be at least 2 characters'),
@@ -31,7 +32,7 @@ export const ContactPage: React.FC = () => {
   });
 
   const onSubmit = async (data: ContactFormData) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await sendSubmissionEmail({ formType: 'contact', formData: data });
     setIsSubmitted(true);
     confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
     reset();
