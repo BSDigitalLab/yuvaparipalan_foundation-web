@@ -8,10 +8,12 @@ export const Footer: React.FC = () => {
       {/* Background Accent */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-64 bg-emerald-500/5 blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
+      {/* Main 5-Column Container spanning viewport width */}
+      <div className="w-full max-w-full px-6 sm:px-12 lg:px-16 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-10 mb-16">
+          
           {/* Column 1: Movement Identity */}
-          <div className="lg:col-span-2 space-y-5">
+          <div className="space-y-5">
             <Link to="/" className="inline-block bg-white/95 p-3 rounded-2xl border border-emerald-500/20 shadow-md">
               <img
                 src="/brands/bs_logo.png"
@@ -20,7 +22,7 @@ export const Footer: React.FC = () => {
               />
             </Link>
 
-            <p className="text-sm text-emerald-200/90 leading-relaxed italic border-l-2 border-emerald-500/40 pl-3">
+            <p className="text-xs text-emerald-200/90 leading-relaxed italic border-l-2 border-emerald-500/40 pl-3">
               "Every Youth is a Possibility. Every Possibility Creates Change. Every Change Builds a Better India."
             </p>
           </div>
@@ -28,7 +30,7 @@ export const Footer: React.FC = () => {
           {/* Column 2: Flagship Missions */}
           <div className="space-y-4">
             <h3 className="font-heading font-bold text-white text-base">Flagship Missions</h3>
-            <ul className="space-y-2 text-sm text-emerald-200/90">
+            <ul className="space-y-2 text-xs text-emerald-200/90">
               <li>
                 <Link to="/programs#scholarship-mission" className="hover:text-white transition-colors flex items-center gap-1.5">
                   <ArrowRight className="w-3 h-3 text-emerald-400" /> Scholarship Mission
@@ -65,7 +67,7 @@ export const Footer: React.FC = () => {
           {/* Column 3: Quick Navigation */}
           <div className="space-y-4">
             <h3 className="font-heading font-bold text-white text-base">Quick Links</h3>
-            <ul className="space-y-2 text-sm text-emerald-200/90">
+            <ul className="space-y-2 text-xs text-emerald-200/90">
               <li><Link to="/about" className="hover:text-white transition-colors">About Our Movement</Link></li>
               <li><Link to="/impact" className="hover:text-white transition-colors">2035 Impact Goals</Link></li>
               <li><Link to="/leadership" className="hover:text-white transition-colors">Leadership & Patrons</Link></li>
@@ -76,7 +78,7 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Column 4: Official Contacts & Locations */}
+          {/* Column 4: Official Headquarters & Locations */}
           <div className="space-y-4">
             <h3 className="font-heading font-bold text-white text-base">Headquarters</h3>
             <div className="space-y-3 text-xs text-emerald-200/90">
@@ -95,20 +97,56 @@ export const Footer: React.FC = () => {
                   #3, Sri Mahalakshmi Garden, Saravanampatti, Coimbatore, Tamil Nadu 641035
                 </div>
               </div>
-
-              <div className="pt-2 space-y-1.5">
-                <a href="tel:+919562858868" className="flex items-center gap-2 hover:text-white transition-colors">
-                  <Phone className="w-3.5 h-3.5 text-emerald-400" /> +91 95628 58868
-                </a>
-                <a href="mailto:hello@yuvaparipalan.org" className="flex items-center gap-2 hover:text-white transition-colors">
-                  <Mail className="w-3.5 h-3.5 text-emerald-400" /> hello@yuvaparipalan.org
-                </a>
-                <a href="https://www.yuvaparipalan.org" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors">
-                  <Globe className="w-3.5 h-3.5 text-emerald-400" /> www.yuvaparipalan.org
-                </a>
-              </div>
             </div>
           </div>
+
+          {/* Column 5: Contact Information & Direct Channels (Far Right) */}
+          <div className="space-y-4">
+            <h3 className="font-heading font-bold text-white text-base">Contact & Connect</h3>
+            <div className="space-y-3 text-xs text-emerald-200/90">
+              <a 
+                href="tel:+919562858868" 
+                className="p-3 rounded-2xl bg-emerald-950/60 border border-emerald-800/80 hover:border-emerald-500/50 transition-colors flex items-center gap-3 block group"
+              >
+                <div className="p-2 rounded-xl bg-emerald-900/60 text-emerald-400 group-hover:text-white transition-colors">
+                  <Phone className="w-4 h-4" />
+                </div>
+                <div>
+                  <span className="text-[10px] text-emerald-400 font-mono block">Helpline</span>
+                  <strong className="text-xs text-white">+91 95628 58868</strong>
+                </div>
+              </a>
+
+              <a 
+                href="mailto:hello@yuvaparipalan.org" 
+                className="p-3 rounded-2xl bg-emerald-950/60 border border-emerald-800/80 hover:border-emerald-500/50 transition-colors flex items-center gap-3 block group"
+              >
+                <div className="p-2 rounded-xl bg-emerald-900/60 text-emerald-400 group-hover:text-white transition-colors">
+                  <Mail className="w-4 h-4" />
+                </div>
+                <div className="min-w-0">
+                  <span className="text-[10px] text-emerald-400 font-mono block">Official Email</span>
+                  <strong className="text-xs text-white truncate block">hello@yuvaparipalan.org</strong>
+                </div>
+              </a>
+
+              <a 
+                href="https://www.yuvaparipalan.org" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="p-3 rounded-2xl bg-emerald-950/60 border border-emerald-800/80 hover:border-emerald-500/50 transition-colors flex items-center gap-3 block group"
+              >
+                <div className="p-2 rounded-xl bg-emerald-900/60 text-emerald-400 group-hover:text-white transition-colors">
+                  <Globe className="w-4 h-4" />
+                </div>
+                <div>
+                  <span className="text-[10px] text-emerald-400 font-mono block">Official Portal</span>
+                  <strong className="text-xs text-white">www.yuvaparipalan.org</strong>
+                </div>
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
 
