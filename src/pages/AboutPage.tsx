@@ -2,8 +2,8 @@ import React from 'react';
 import { SEOHead } from '../components/common/SEOHead';
 import { FadeIn } from '../components/motion/FadeIn';
 import {
-  ShieldCheck, Heart, Sparkles, Award, Lightbulb, Users, Leaf,
-  Calendar, Building2, Target, Compass, ArrowRight, Globe,
+  ShieldCheck, Heart, Sparkles, Award, Lightbulb, Users, Leaf, Globe,
+  Calendar, Building2, Target, Compass, ArrowRight,
   GraduationCap, Brain, HeartHandshake, CheckCircle2
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -309,17 +309,17 @@ export const AboutPage: React.FC = () => {
                 }}
               />
 
-              <div className="space-y-4 relative z-10">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-800 text-emerald-100 border border-emerald-600 text-[10px] font-mono font-bold uppercase tracking-wider">
-                  <Sparkles className="w-3.5 h-3.5 text-emerald-200" />
-                  <span>Strategic Impact Pillars</span>
-                </div>
-
-                <div className="space-y-1">
-                  <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              <div className="space-y-6 relative z-10">
+                {/* Side-by-Side Header Row with Vertical Separator Line */}
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6 pb-2 border-b border-emerald-700/50">
+                  <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight shrink-0">
                     OUR FOCUS AREAS
                   </h2>
-                  <p className="text-emerald-100 text-xs sm:text-sm font-medium max-w-3xl">
+
+                  {/* Vertical Separator Line */}
+                  <div className="hidden md:block w-px h-10 bg-emerald-400/30 shrink-0" />
+
+                  <p className="text-emerald-100 text-xs sm:text-sm font-medium leading-relaxed max-w-2xl">
                     15 core strategic domains driving holistic human development, skill acquisition, and social transformation across India.
                   </p>
                 </div>
