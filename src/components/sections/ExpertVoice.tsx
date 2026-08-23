@@ -109,7 +109,7 @@ export const ExpertVoice: React.FC = () => {
                   <div className="relative aspect-video w-full overflow-hidden bg-slate-950">
                     <img
                       src={posterSrc}
-                      alt={video.title}
+                      alt={video.name}
                       loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
                     />
@@ -149,16 +149,9 @@ export const ExpertVoice: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Card Content & Speaker Details */}
-                  <div className="p-5 sm:p-6 space-y-4 flex-1 flex flex-col justify-between">
-                    <div className="space-y-2">
-                      <h3 className="font-heading font-extrabold text-base sm:text-lg text-slate-950 group-hover:text-[#15803d] transition-colors leading-snug line-clamp-2">
-                        "{video.title}"
-                      </h3>
-                    </div>
-
-                    {/* Speaker Profile Details */}
-                    <div className="pt-4 border-t border-slate-100 flex items-center gap-3.5">
+                  {/* Speaker Profile Details (Clean, no description line) */}
+                  <div className="p-5 sm:p-6 flex-1 flex flex-col justify-center">
+                    <div className="flex items-center gap-3.5">
                       <img
                         src={video.avatarUrl}
                         alt={video.name}
@@ -166,7 +159,7 @@ export const ExpertVoice: React.FC = () => {
                         className="w-12 h-12 rounded-2xl object-cover border-2 border-emerald-600/40 shadow-sm shrink-0"
                       />
                       <div className="flex-1 min-w-0">
-                        <h4 className="font-heading font-extrabold text-sm text-slate-950 truncate">
+                        <h4 className="font-heading font-extrabold text-sm sm:text-base text-slate-950 truncate group-hover:text-[#15803d] transition-colors">
                           {video.name}
                         </h4>
                         <p className="text-xs font-extrabold text-emerald-800 truncate">
@@ -238,7 +231,7 @@ export const ExpertVoice: React.FC = () => {
                 <div className="relative w-full max-w-sm sm:max-w-md mx-auto aspect-[9/16] h-[500px] rounded-2xl overflow-hidden bg-black border border-slate-800 shadow-inner flex items-center justify-center">
                   <iframe
                     src={`https://www.instagram.com/reel/${modalVideo.instagramCode}/embed`}
-                    title={modalVideo.title}
+                    title={modalVideo.name}
                     allowTransparency
                     allow="encrypted-media"
                     className="w-full h-full border-0 rounded-2xl"
@@ -261,7 +254,7 @@ export const ExpertVoice: React.FC = () => {
               <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-black border border-slate-800 shadow-inner">
                 <iframe
                   src={`https://www.youtube-nocookie.com/embed/${modalVideo.youtubeId}?autoplay=1&rel=0`}
-                  title={modalVideo.title}
+                  title={modalVideo.name}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   className="w-full h-full border-0"
