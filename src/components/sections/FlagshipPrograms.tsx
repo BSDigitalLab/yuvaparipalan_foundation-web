@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { FLAGSHIP_PROGRAMS } from '../../data/mockData';
 import { Program } from '../../types';
 import { FadeIn } from '../motion/FadeIn';
-import { Button } from '../ui/Button';
-import { Link } from 'react-router-dom';
 import {
   GraduationCap, Sparkles, BrainCircuit, Laptop, HeartPulse, ShieldCheck,
   Coins, UsersRound, ArrowRight, CheckCircle2, Target
@@ -42,72 +40,76 @@ export const FlagshipPrograms: React.FC = () => {
 
         {/* 8 Program Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 lg:gap-6">
-          {FLAGSHIP_PROGRAMS.map((program, index) => (
-            <FadeIn key={program.id} direction="up" delay={index * 0.05}>
-              <div
-                onClick={(e) => {
-                  if (program.id === 'merit-scholarship') {
-                    e.stopPropagation();
-                    window.open('https://www.yuvaparipalan.com/', '_blank', 'noopener,noreferrer');
-                  } else {
-                    setSelectedProgram(program);
-                  }
-                }}
-                className="group cursor-pointer p-4 sm:p-5 rounded-2xl bg-white border border-emerald-900/10 hover:border-emerald-700/40 hover:shadow-xl transition-all duration-300 flex flex-col justify-between h-full relative overflow-hidden shadow-sm"
-              >
-                <div className="space-y-2.5">
-                  {/* Restructured Card Header: Compact layout with icon, 2-line title & subtitle */}
-                  <div className="flex items-start gap-3">
-                    <div className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 group-hover:scale-105 transition-transform shrink-0">
-                      {iconMap[program.iconName]}
+          {FLAGSHIP_PROGRAMS.map((program, index) => {
+            const isScholarship = program.id === 'scholarship-mission' || program.id === 'merit-scholarship' || program.title.toLowerCase().includes('scholarship');
+
+            return (
+              <FadeIn key={program.id} direction="up" delay={index * 0.05}>
+                <div
+                  onClick={(e) => {
+                    if (isScholarship) {
+                      e.stopPropagation();
+                      window.open('https://www.yuvaparipalan.com/', '_blank', 'noopener,noreferrer');
+                    } else {
+                      setSelectedProgram(program);
+                    }
+                  }}
+                  className="group cursor-pointer p-4 sm:p-5 rounded-2xl bg-white border border-emerald-900/10 hover:border-emerald-700/40 hover:shadow-xl transition-all duration-300 flex flex-col justify-between h-full relative overflow-hidden shadow-sm"
+                >
+                  <div className="space-y-2.5">
+                    {/* Restructured Card Header: Compact layout with icon, 2-line title & subtitle */}
+                    <div className="flex items-start gap-3">
+                      <div className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 group-hover:scale-105 transition-transform shrink-0">
+                        {iconMap[program.iconName]}
+                      </div>
+                      <div className="flex flex-col text-left overflow-hidden">
+                        <h3 className="font-heading font-extrabold text-base text-slate-950 group-hover:text-emerald-800 transition-colors leading-snug line-clamp-2">
+                          {program.title}
+                        </h3>
+                        <span className="text-xs font-bold text-emerald-800 tracking-wide mt-0.5 truncate">
+                          {program.badge}
+                        </span>
+                      </div>
                     </div>
-                    <div className="flex flex-col text-left overflow-hidden">
-                      <h3 className="font-heading font-extrabold text-base text-slate-950 group-hover:text-emerald-800 transition-colors leading-snug line-clamp-2">
-                        {program.title}
-                      </h3>
-                      <span className="text-xs font-bold text-emerald-800 tracking-wide mt-0.5 truncate">
-                        {program.badge}
-                      </span>
-                    </div>
+
+                    <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">
+                      {program.shortDescription}
+                    </p>
                   </div>
 
-                  <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">
-                    {program.shortDescription}
-                  </p>
-                </div>
+                  {/* Card Footer: Target Metric + Right-Aligned CTA Button */}
+                  <div className="pt-3.5 mt-3.5 border-t border-slate-200 flex flex-col gap-2.5">
+                    <div className="flex items-center gap-1.5 text-xs font-mono text-emerald-900 font-semibold truncate">
+                      <Target className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                      <span className="truncate">{program.impactTarget}</span>
+                    </div>
 
-                {/* Card Footer: Target Metric + Right-Aligned CTA Button */}
-                <div className="pt-3.5 mt-3.5 border-t border-slate-200 flex flex-col gap-2.5">
-                  <div className="flex items-center gap-1.5 text-xs font-mono text-emerald-900 font-semibold truncate">
-                    <Target className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
-                    <span className="truncate">{program.impactTarget}</span>
-                  </div>
-
-                  <div className="flex items-center justify-end w-full">
-                    {program.id === 'merit-scholarship' ? (
-                      <a
-                        href="https://www.yuvaparipalan.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="ml-auto"
-                      >
-                        <button className="bg-[#15803d] hover:bg-[#166534] text-white font-bold text-xs px-4 py-2 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.03] flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-700">
+                    <div className="flex items-center justify-end w-full">
+                      {isScholarship ? (
+                        <a
+                          href="https://www.yuvaparipalan.com/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="ml-auto"
+                        >
+                          <button className="bg-[#15803d] hover:bg-[#166534] text-white font-bold text-xs px-4 py-2 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.03] flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-700">
+                            <span>Learn More & Apply</span>
+                            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-emerald-100" />
+                          </button>
+                        </a>
+                      ) : (
+                        <button className="bg-[#15803d] hover:bg-[#166534] text-white font-bold text-xs px-4 py-2 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.03] flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-700 ml-auto">
                           <span>Learn More & Apply</span>
                           <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-emerald-100" />
                         </button>
-                      </a>
-                    ) : (
-                      <button className="bg-[#15803d] hover:bg-[#166534] text-white font-bold text-xs px-4 py-2 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.03] flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-700 ml-auto">
-                        <span>Learn More & Apply</span>
-                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-emerald-100" />
-                      </button>
-                    )}
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </FadeIn>
-          ))}
+              </FadeIn>
+            );
+          })}
         </div>
 
         {/* Program Detail Modal */}

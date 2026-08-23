@@ -130,7 +130,7 @@ export const ProgramsPage: React.FC = () => {
                     <div className="text-xs font-mono font-bold text-emerald-900 flex items-center gap-1.5">
                       <Target className="w-4 h-4 text-emerald-800" /> {program.impactTarget}
                     </div>
-                    {program.id === 'merit-scholarship' ? (
+                    {program.id === 'scholarship-mission' || program.id === 'merit-scholarship' || program.title.toLowerCase().includes('scholarship') ? (
                       <a
                         href="https://www.yuvaparipalan.com/"
                         target="_blank"
