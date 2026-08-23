@@ -137,16 +137,18 @@ export const ProgramsPage: React.FC = () => {
                         rel="noopener noreferrer"
                         className="w-full sm:w-auto"
                       >
-                        <Button variant="primary" size="sm" rightIcon={<ArrowRight className="w-4 h-4" />}>
-                          Get Involved / Apply
-                        </Button>
+                        <button className="bg-[#15803d] hover:bg-[#166534] text-white font-bold text-xs px-4 py-2 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.03] flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-700">
+                          <span>Learn More & Apply</span>
+                          <ArrowRight className="w-3.5 h-3.5 text-emerald-100" />
+                        </button>
                       </a>
                     ) : (
-                      <Link to="/volunteer" className="w-full sm:w-auto">
-                        <Button variant="primary" size="sm" rightIcon={<ArrowRight className="w-4 h-4" />}>
-                          Get Involved / Apply
-                        </Button>
-                      </Link>
+                      <button
+                        disabled
+                        className="w-full sm:w-auto px-4 py-2 rounded-xl text-xs font-bold bg-slate-200 text-slate-500 border border-slate-300 cursor-not-allowed opacity-80"
+                      >
+                        Launching Soon
+                      </button>
                     )}
                   </div>
                 </div>

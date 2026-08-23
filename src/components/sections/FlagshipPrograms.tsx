@@ -163,11 +163,12 @@ export const FlagshipPrograms: React.FC = () => {
                   >
                     Close
                   </button>
-                  <Link to="/volunteer" className="w-full sm:w-auto">
-                    <Button variant="primary" size="sm">
-                      Apply / Get Involved
-                    </Button>
-                  </Link>
+                  <button
+                    disabled
+                    className="w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs font-bold bg-slate-200 text-slate-500 border border-slate-300 cursor-not-allowed opacity-80"
+                  >
+                    Launching Soon
+                  </button>
                 </div>
               </div>
             </div>
