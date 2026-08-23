@@ -44,13 +44,7 @@ export const JoinCTA: React.FC = () => {
               </Link>
             </div>
 
-            <div className="pt-6 border-t border-emerald-800/80 flex flex-wrap justify-center items-center gap-6 text-xs text-emerald-200 font-mono">
-              <span>Section 8 NGO</span>
-              <span>•</span>
-              <span>Kannur (Kerala) & Coimbatore (Tamil Nadu)</span>
-              <span>•</span>
-              <span>Helpline: +91 95628 58868</span>
-            </div>
+
 
           </div>
         </FadeIn>
