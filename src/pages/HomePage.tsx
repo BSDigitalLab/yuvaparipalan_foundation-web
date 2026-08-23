@@ -6,7 +6,6 @@ import { ImpactCounter } from '../components/sections/ImpactCounter';
 import { MissionVision } from '../components/sections/MissionVision';
 import { FocusAreas } from '../components/sections/FocusAreas';
 import { SuccessStories } from '../components/sections/SuccessStories';
-import { LeadershipHighlight } from '../components/sections/LeadershipHighlight';
 import { GalleryTeaser } from '../components/sections/GalleryTeaser';
 import { JoinCTA } from '../components/sections/JoinCTA';
 
@@ -24,7 +23,6 @@ export const HomePage: React.FC = () => {
         <MissionVision />
         <FocusAreas />
         <SuccessStories />
-        <LeadershipHighlight />
         <GalleryTeaser />
         <JoinCTA />
       </main>
