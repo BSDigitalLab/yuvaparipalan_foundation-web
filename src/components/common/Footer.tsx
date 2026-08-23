@@ -4,13 +4,13 @@ import { MapPin, Phone, Mail, Globe, Heart, ArrowRight } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#0f2d1e] border-t border-emerald-900/40 text-emerald-100 relative overflow-hidden pt-16 pb-12">
+    <footer className="bg-[#0f2d1e] border-t border-emerald-900/40 text-emerald-100 relative overflow-hidden pt-12 sm:pt-14 pb-6 sm:pb-8">
       {/* Background Accent */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-64 bg-emerald-500/5 blur-[120px] pointer-events-none" />
 
       {/* Main 5-Column Container spanning viewport width */}
       <div className="w-full max-w-full px-6 sm:px-12 lg:px-16 relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-10 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-10 mb-6 sm:mb-8">
           
           {/* Column 1: Movement Identity */}
           <div className="space-y-5">
@@ -140,7 +140,7 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Bottom Bar: Positioned Extreme Left and Right of the Page */}
-      <div className="pt-8 border-t border-emerald-900/60 w-full max-w-full px-6 sm:px-12 lg:px-16 relative z-10">
+      <div className="pt-5 sm:pt-6 border-t border-emerald-900/60 w-full max-w-full px-6 sm:px-12 lg:px-16 relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-emerald-300/70">
           <p>© {new Date().getFullYear()} Yuvaparipalan Foundation. All rights reserved. Non-profit Section 8 Organization.</p>
           <div className="flex flex-wrap items-center gap-4 sm:gap-6">
