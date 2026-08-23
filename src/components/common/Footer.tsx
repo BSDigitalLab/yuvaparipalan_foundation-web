@@ -112,7 +112,6 @@ export const Footer: React.FC = () => {
                   <Phone className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-emerald-400 font-mono block">Helpline</span>
                   <strong className="text-xs text-white">+91 95628 58868</strong>
                 </div>
               </a>
@@ -125,7 +124,6 @@ export const Footer: React.FC = () => {
                   <Mail className="w-4 h-4" />
                 </div>
                 <div className="min-w-0">
-                  <span className="text-[10px] text-emerald-400 font-mono block">Official Email</span>
                   <strong className="text-xs text-white truncate block">hello@yuvaparipalan.org</strong>
                 </div>
               </a>
@@ -140,7 +138,6 @@ export const Footer: React.FC = () => {
                   <Globe className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-emerald-400 font-mono block">Official Portal</span>
                   <strong className="text-xs text-white">www.yuvaparipalan.org</strong>
                 </div>
               </a>
