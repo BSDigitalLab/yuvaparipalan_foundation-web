@@ -11,7 +11,7 @@ export const JoinCTA: React.FC = () => {
         <FadeIn direction="up">
           <div className="p-8 sm:p-16 rounded-3xl bg-gradient-to-br from-emerald-900 via-green-900 to-emerald-950 text-white border border-emerald-700/40 shadow-2xl text-center max-w-5xl mx-auto space-y-8 relative overflow-hidden">
             
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+            <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
               Ready to Shape India's Future?
             </h2>
 

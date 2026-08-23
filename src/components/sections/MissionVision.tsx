@@ -49,7 +49,7 @@ export const MissionVision: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn direction="up">
           <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
+            <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
               Every Great Transformation Begins with a Great Dream
             </h2>
             <p className="text-slate-600 text-sm sm:text-base">

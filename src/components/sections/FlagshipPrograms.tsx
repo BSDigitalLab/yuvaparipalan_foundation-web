@@ -29,7 +29,7 @@ export const FlagshipPrograms: React.FC = () => {
         {/* Section Header: Reduced Top Vertical Gap to Half */}
         <FadeIn direction="up">
           <div className="mb-8 sm:mb-10 max-w-3xl">
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
+            <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
               Flagship Programs
             </h2>
             <p className="text-slate-600 text-sm sm:text-base mt-2">

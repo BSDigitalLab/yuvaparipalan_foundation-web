@@ -25,7 +25,7 @@ export const PartnerNetwork: React.FC = () => {
             <span className="text-xs font-mono font-semibold tracking-widest text-emerald-900 uppercase bg-emerald-100 px-3 py-1 rounded-full border border-emerald-300">
               Global Alignment
             </span>
-            <h2 className="font-heading text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
               United Nations Sustainable Development Goals
             </h2>
             <p className="text-slate-600 text-sm sm:text-base">

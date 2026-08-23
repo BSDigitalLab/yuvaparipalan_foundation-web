@@ -16,7 +16,7 @@ export const GalleryTeaser: React.FC = () => {
         <FadeIn direction="up">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div className="space-y-3 max-w-2xl">
-              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
+              <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
                 Moments of Impact & Transformation
               </h2>
               <p className="text-slate-600 text-sm sm:text-base">
