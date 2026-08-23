@@ -222,7 +222,7 @@ export const AboutPage: React.FC = () => {
                   Ethical Anchor
                 </span>
                 <h2 className="font-heading text-xl sm:text-2xl font-bold text-slate-950 tracking-tight">
-                  Our 7 Core Values
+                  Our Core Values
                 </h2>
                 <p className="text-slate-600 text-xs font-medium">The guiding principles underpinning all Yuvaparipalan missions and governance.</p>
               </div>
