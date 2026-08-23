@@ -2,8 +2,9 @@ import React from 'react';
 import { SEOHead } from '../components/common/SEOHead';
 import { FadeIn } from '../components/motion/FadeIn';
 import {
-  ShieldCheck, Heart, Sparkles, Award, Lightbulb, Users, Leaf, Globe,
-  Calendar, Building2, Target, Compass, ArrowRight
+  ShieldCheck, Heart, Sparkles, Award, Lightbulb, Users, Leaf,
+  Calendar, Building2, Target, Compass, ArrowRight, Globe,
+  GraduationCap, Brain, HeartHandshake, CheckCircle2
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -18,13 +19,46 @@ export const AboutPage: React.FC = () => {
     { id: '07', title: 'Sustainability', desc: 'We design initiatives that create long-term social, educational, economic, and environmental impact.', icon: <Leaf className="w-4.5 h-4.5 text-emerald-800" /> },
   ];
 
-  const sdgBadges = [
-    { code: 'SDG 4', title: 'Quality Education' },
-    { code: 'SDG 5', title: 'Gender Equality' },
-    { code: 'SDG 8', title: 'Decent Work & Growth' },
-    { code: 'SDG 9', title: 'Industry & Innovation' },
-    { code: 'SDG 10', title: 'Reduced Inequalities' },
-    { code: 'SDG 16', title: 'Peace & Strong Institutions' },
+  const focusCategories = [
+    {
+      title: 'Empowerment & Scholarships',
+      icon: <GraduationCap className="w-5 h-5 text-emerald-300" />,
+      items: [
+        'Student Empowerment',
+        'Youth Empowerment',
+        'Women Empowerment',
+        'Scholarship Programmes',
+      ],
+    },
+    {
+      title: 'Leadership & Career Guidance',
+      icon: <Compass className="w-5 h-5 text-amber-300" />,
+      items: [
+        'Career Guidance & Mentoring',
+        'Leadership Development',
+        'Personality Development',
+        'Entrepreneurship Development',
+      ],
+    },
+    {
+      title: 'Digital Skills & Wellbeing',
+      icon: <Brain className="w-5 h-5 text-cyan-300" />,
+      items: [
+        'Financial Literacy',
+        'Digital Marketing & Digital Skills',
+        'Artificial Intelligence (AI) Awareness',
+        'Mental Health & Emotional Well-being',
+      ],
+    },
+    {
+      title: 'Healthcare & Community Impact',
+      icon: <HeartHandshake className="w-5 h-5 text-rose-300" />,
+      items: [
+        'Preventive Healthcare',
+        'Community Development',
+        'Volunteerism & Social Service',
+      ],
+    },
   ];
 
   const historicalMilestones = [
@@ -66,7 +100,7 @@ export const AboutPage: React.FC = () => {
     <>
       <SEOHead
         title="About Us - Yuvaparipalan Foundation"
-        description="Discover the history, vision, values, and Section 8 governance of Yuvaparipalan Foundation, evolved from Palana Trust in 2016."
+        description="Discover the history, vision, values, focus areas, and Section 8 governance of Yuvaparipalan Foundation, evolved from Palana Trust in 2016."
       />
 
       <div className="pt-20 sm:pt-24 pb-14 sm:pb-16 bg-[#f8faf8] relative overflow-hidden">
@@ -214,7 +248,7 @@ export const AboutPage: React.FC = () => {
             </div>
           </FadeIn>
 
-          {/* Compact 7 Core Values Grid */}
+          {/* Compact Our Core Values Grid (Icon on Left of Card Title, Low Profile Height) */}
           <div className="space-y-4">
             <FadeIn direction="up">
               <div className="text-left space-y-1 border-b border-emerald-900/10 pb-3">
@@ -263,41 +297,73 @@ export const AboutPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Compact UN SDG Alignment Banner */}
+          {/* Professional & Innovative "OUR FOCUS AREAS" Section */}
           <FadeIn direction="up">
-            <div className="p-6 sm:p-8 rounded-2xl bg-[#15803d] text-white shadow-xl text-left space-y-6 relative overflow-hidden">
-              <div className="max-w-4xl space-y-3 relative z-10">
+            <div className="p-6 sm:p-10 rounded-3xl bg-[#15803d] text-white shadow-xl text-left space-y-8 relative overflow-hidden">
+              {/* Background Ambient Radial Glow */}
+              <div 
+                className="absolute top-0 right-0 w-[500px] h-[300px] pointer-events-none opacity-15"
+                style={{
+                  background: 'radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%)',
+                  filter: 'blur(60px)',
+                }}
+              />
+
+              <div className="space-y-4 relative z-10">
                 <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-800 text-emerald-100 border border-emerald-600 text-[10px] font-mono font-bold uppercase tracking-wider">
-                  <Globe className="w-3.5 h-3.5 text-emerald-200" />
-                  <span>Global & National Alignment</span>
+                  <Sparkles className="w-3.5 h-3.5 text-emerald-200" />
+                  <span>Strategic Impact Pillars</span>
                 </div>
 
-                <h2 className="font-heading text-xl sm:text-2xl font-bold text-white tracking-tight leading-snug">
-                  Aligned with United Nations SDGs & India's National Vision
-                </h2>
+                <div className="space-y-1">
+                  <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                    OUR FOCUS AREAS
+                  </h2>
+                  <p className="text-emerald-100 text-xs sm:text-sm font-medium max-w-3xl">
+                    15 core strategic domains driving holistic human development, skill acquisition, and social transformation across India.
+                  </p>
+                </div>
 
-                <p className="text-emerald-100 text-xs leading-relaxed font-medium max-w-3xl">
-                  Our initiatives directly advance Sustainable Development Goals in Quality Education (SDG 4), Gender Equality (SDG 5), Decent Work & Economic Growth (SDG 8), Innovation & Infrastructure (SDG 9), and Reduced Inequalities (SDG 10).
-                </p>
+                {/* 4 Pillar Category Cards Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+                  {focusCategories.map((category, idx) => (
+                    <div 
+                      key={idx} 
+                      className="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/15 transition-all duration-300 space-y-3.5 flex flex-col justify-between"
+                    >
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-2.5 pb-2 border-b border-white/15">
+                          <div className="p-2 rounded-xl bg-emerald-950/40 border border-white/20">
+                            {category.icon}
+                          </div>
+                          <h3 className="font-heading font-bold text-sm text-white leading-tight">
+                            {category.title}
+                          </h3>
+                        </div>
 
-                {/* SDG Badges Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 pt-1">
-                  {sdgBadges.map((sdg, i) => (
-                    <div key={i} className="p-2.5 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-center space-y-0.5 hover:bg-white/20 transition-colors">
-                      <span className="text-[9px] font-mono font-bold text-amber-300 block">{sdg.code}</span>
-                      <span className="text-[11px] font-bold text-white block truncate">{sdg.title}</span>
+                        <ul className="space-y-2">
+                          {category.items.map((item, itemIdx) => (
+                            <li key={itemIdx} className="flex items-start gap-2 text-xs text-emerald-50 font-medium">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-300 shrink-0 mt-0.5" />
+                              <span className="leading-snug">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="h-1 w-full bg-gradient-to-r from-emerald-400 to-amber-300 opacity-30 rounded-full" />
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Bottom Action Strip */}
-              <div className="pt-4 border-t border-emerald-700/60 flex flex-col sm:flex-row items-center justify-between gap-3">
+              <div className="pt-6 border-t border-emerald-700/60 flex flex-col sm:flex-row items-center justify-between gap-4 relative z-10">
                 <span className="text-[11px] text-emerald-100 font-mono font-semibold">
                   Section 8 NGO • Kannur & Coimbatore Headquarters • Helpline: +91 95628 58868
                 </span>
                 <Link to="/volunteer">
-                  <button className="bg-white text-emerald-950 hover:bg-emerald-50 font-bold text-xs px-4 py-2 rounded-lg shadow-md transition-all hover:scale-105 flex items-center gap-1.5">
+                  <button className="bg-white text-emerald-950 hover:bg-emerald-50 font-bold text-xs px-5 py-2.5 rounded-xl shadow-md transition-all hover:scale-105 flex items-center gap-1.5">
                     <span>Join as Volunteer</span>
                     <ArrowRight className="w-3.5 h-3.5 text-emerald-900" />
                   </button>
