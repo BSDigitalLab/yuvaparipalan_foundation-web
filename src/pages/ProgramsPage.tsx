@@ -130,11 +130,24 @@ export const ProgramsPage: React.FC = () => {
                     <div className="text-xs font-mono font-bold text-emerald-900 flex items-center gap-1.5">
                       <Target className="w-4 h-4 text-emerald-800" /> {program.impactTarget}
                     </div>
-                    <Link to="/volunteer" className="w-full sm:w-auto">
-                      <Button variant="primary" size="sm" rightIcon={<ArrowRight className="w-4 h-4" />}>
-                        Get Involved / Apply
-                      </Button>
-                    </Link>
+                    {program.id === 'merit-scholarship' ? (
+                      <a
+                        href="https://www.yuvaparipalan.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full sm:w-auto"
+                      >
+                        <Button variant="primary" size="sm" rightIcon={<ArrowRight className="w-4 h-4" />}>
+                          Get Involved / Apply
+                        </Button>
+                      </a>
+                    ) : (
+                      <Link to="/volunteer" className="w-full sm:w-auto">
+                        <Button variant="primary" size="sm" rightIcon={<ArrowRight className="w-4 h-4" />}>
+                          Get Involved / Apply
+                        </Button>
+                      </Link>
+                    )}
                   </div>
                 </div>
               </FadeIn>

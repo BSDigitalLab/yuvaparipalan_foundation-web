@@ -3,7 +3,6 @@ import { FLAGSHIP_PROGRAMS } from '../../data/mockData';
 import { Program } from '../../types';
 import { FadeIn } from '../motion/FadeIn';
 import { Button } from '../ui/Button';
-import { Badge } from '../ui/Badge';
 import { Link } from 'react-router-dom';
 import {
   GraduationCap, Sparkles, BrainCircuit, Laptop, HeartPulse, ShieldCheck,
@@ -46,7 +45,14 @@ export const FlagshipPrograms: React.FC = () => {
           {FLAGSHIP_PROGRAMS.map((program, index) => (
             <FadeIn key={program.id} direction="up" delay={index * 0.05}>
               <div
-                onClick={() => setSelectedProgram(program)}
+                onClick={(e) => {
+                  if (program.id === 'merit-scholarship') {
+                    e.stopPropagation();
+                    window.open('https://www.yuvaparipalan.com/', '_blank', 'noopener,noreferrer');
+                  } else {
+                    setSelectedProgram(program);
+                  }
+                }}
                 className="group cursor-pointer p-4 sm:p-5 rounded-2xl bg-white border border-emerald-900/10 hover:border-emerald-700/40 hover:shadow-xl transition-all duration-300 flex flex-col justify-between h-full relative overflow-hidden shadow-sm"
               >
                 <div className="space-y-2.5">
@@ -70,7 +76,7 @@ export const FlagshipPrograms: React.FC = () => {
                   </p>
                 </div>
 
-                {/* Card Footer: Target Metric + Right-Aligned Attractive CTA Button */}
+                {/* Card Footer: Target Metric + Right-Aligned CTA Button */}
                 <div className="pt-3.5 mt-3.5 border-t border-slate-200 flex flex-col gap-2.5">
                   <div className="flex items-center gap-1.5 text-xs font-mono text-emerald-900 font-semibold truncate">
                     <Target className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
@@ -78,10 +84,25 @@ export const FlagshipPrograms: React.FC = () => {
                   </div>
 
                   <div className="flex items-center justify-end w-full">
-                    <button className="bg-[#15803d] hover:bg-[#166534] text-white font-bold text-xs px-4 py-2 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.03] flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-700 ml-auto">
-                      <span>Learn More & Apply</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-emerald-100" />
-                    </button>
+                    {program.id === 'merit-scholarship' ? (
+                      <a
+                        href="https://www.yuvaparipalan.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="ml-auto"
+                      >
+                        <button className="bg-[#15803d] hover:bg-[#166534] text-white font-bold text-xs px-4 py-2 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.03] flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-700">
+                          <span>Learn More & Apply</span>
+                          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-emerald-100" />
+                        </button>
+                      </a>
+                    ) : (
+                      <button className="bg-[#15803d] hover:bg-[#166534] text-white font-bold text-xs px-4 py-2 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.03] flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-700 ml-auto">
+                        <span>Learn More & Apply</span>
+                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-emerald-100" />
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
@@ -92,7 +113,7 @@ export const FlagshipPrograms: React.FC = () => {
         {/* Program Detail Modal */}
         {selectedProgram && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md animate-fadeIn">
-            <div className="max-w-2xl w-full bg-white border border-emerald-900/20 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl relative">
+            <div className="max-w-2xl w-full bg-white border border-emerald-900/20 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl relative text-left">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex items-start gap-4">
                   <div className="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 shrink-0">
