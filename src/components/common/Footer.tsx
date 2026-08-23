@@ -103,45 +103,37 @@ export const Footer: React.FC = () => {
           {/* Column 5: Contact Information & Direct Channels (Far Right) */}
           <div className="space-y-4">
             <h3 className="font-heading font-bold text-white text-base">Contact & Connect</h3>
-            <div className="space-y-3 text-xs text-emerald-200/90">
-              <a 
-                href="tel:+919562858868" 
-                className="p-3 rounded-2xl bg-emerald-950/60 border border-emerald-800/80 hover:border-emerald-500/50 transition-colors flex items-center gap-3 block group"
-              >
-                <div className="p-2 rounded-xl bg-emerald-900/60 text-emerald-400 group-hover:text-white transition-colors">
-                  <Phone className="w-4 h-4" />
-                </div>
-                <div>
-                  <strong className="text-xs text-white">+91 95628 58868</strong>
-                </div>
-              </a>
-
-              <a 
-                href="mailto:hello@yuvaparipalan.org" 
-                className="p-3 rounded-2xl bg-emerald-950/60 border border-emerald-800/80 hover:border-emerald-500/50 transition-colors flex items-center gap-3 block group"
-              >
-                <div className="p-2 rounded-xl bg-emerald-900/60 text-emerald-400 group-hover:text-white transition-colors">
-                  <Mail className="w-4 h-4" />
-                </div>
-                <div className="min-w-0">
-                  <strong className="text-xs text-white truncate block">hello@yuvaparipalan.org</strong>
-                </div>
-              </a>
-
-              <a 
-                href="https://www.yuvaparipalan.org" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="p-3 rounded-2xl bg-emerald-950/60 border border-emerald-800/80 hover:border-emerald-500/50 transition-colors flex items-center gap-3 block group"
-              >
-                <div className="p-2 rounded-xl bg-emerald-900/60 text-emerald-400 group-hover:text-white transition-colors">
-                  <Globe className="w-4 h-4" />
-                </div>
-                <div>
-                  <strong className="text-xs text-white">www.yuvaparipalan.org</strong>
-                </div>
-              </a>
-            </div>
+            <ul className="space-y-3.5 text-xs text-emerald-200/90">
+              <li>
+                <a 
+                  href="tel:+919562858868" 
+                  className="flex items-center gap-2.5 hover:text-white transition-colors group"
+                >
+                  <Phone className="w-4 h-4 text-emerald-400 shrink-0 group-hover:scale-110 transition-transform" />
+                  <span>+91 95628 58868</span>
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="mailto:hello@yuvaparipalan.org" 
+                  className="flex items-center gap-2.5 hover:text-white transition-colors group"
+                >
+                  <Mail className="w-4 h-4 text-emerald-400 shrink-0 group-hover:scale-110 transition-transform" />
+                  <span className="truncate">hello@yuvaparipalan.org</span>
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="https://www.yuvaparipalan.org" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-2.5 hover:text-white transition-colors group"
+                >
+                  <Globe className="w-4 h-4 text-emerald-400 shrink-0 group-hover:scale-110 transition-transform" />
+                  <span>www.yuvaparipalan.org</span>
+                </a>
+              </li>
+            </ul>
           </div>
 
         </div>
