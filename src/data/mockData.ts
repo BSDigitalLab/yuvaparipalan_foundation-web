@@ -533,7 +533,7 @@ export const PARTNERS_LIST = [
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: 'g1',
-    title: 'Kerala Chief Minister Unveiling the Flag',
+    title: 'Kerala Chief Minister Unveiling the Flag at Thiruvananthapuram',
     category: 'vip_visits',
     date: '2025-11-15',
     imageUrl: '/events/yp_vd_satheeshan.png',
