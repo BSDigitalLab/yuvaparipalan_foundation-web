@@ -6,17 +6,19 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Award, Users, MapPin, Sparkles, Crown } from 'lucide-react';
 
 export const LeadershipHighlight: React.FC = () => {
-  // 1. Founders Group
-  const founders = TEAM_MEMBERS.filter((m) => m.id === 'biju-sivanandan');
+  // 1. Founders Group: Chairman Biju A Sivanandan, Manoj Rohini, Manikandan P
+  const founders = TEAM_MEMBERS.filter(
+    (m) => m.id === 'biju-sivanandan' || m.id === 'manoj-rohini' || m.id === 'manikandan-p'
+  );
 
   // 2. Our Patrons & Mentors Group
   const patronsAndMentors = TEAM_MEMBERS.filter(
     (m) => m.category === 'mentor' || m.category === 'patron'
   );
 
-  // 3. Our Team Group (Operational Directors & Chiefs)
+  // 3. Our Team Group (Remaining Departmental Chiefs)
   const ourTeam = TEAM_MEMBERS.filter(
-    (m) => m.category === 'executive' && m.id !== 'biju-sivanandan'
+    (m) => m.category === 'executive' && m.id !== 'biju-sivanandan' && m.id !== 'manoj-rohini' && m.id !== 'manikandan-p'
   );
 
   return (
@@ -50,7 +52,7 @@ export const LeadershipHighlight: React.FC = () => {
                 <span className="text-[#15803d]">LEADERSHIP</span>
               </h2>
               <p className="text-slate-700 font-semibold text-base sm:text-xl tracking-wide">
-                Founders, Patrons, Mentors & Operational Team
+                Founders, Directors, Patrons & Operational Team
               </p>
             </div>
 
@@ -62,7 +64,7 @@ export const LeadershipHighlight: React.FC = () => {
           </div>
         </FadeIn>
 
-        {/* 1st Classification: FOUNDERS */}
+        {/* 1st Classification: FOUNDERS & DIRECTORS */}
         <div className="space-y-6">
           <FadeIn direction="up">
             <div className="flex items-center gap-3 text-left">
@@ -71,9 +73,9 @@ export const LeadershipHighlight: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-heading font-extrabold text-2xl text-slate-950 tracking-tight">
-                  Founders
+                  Founders & Directors
                 </h3>
-                <p className="text-xs text-slate-600 font-medium">Founder & Chief Visionary driving national movement execution</p>
+                <p className="text-xs text-slate-600 font-medium">Founding visionaries & executive directors steering national operations</p>
               </div>
             </div>
           </FadeIn>
@@ -81,7 +83,7 @@ export const LeadershipHighlight: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {founders.map((leader, index) => (
               <FadeIn key={leader.id} direction="up" delay={index * 0.05}>
-                {/* Gold-Emerald Ambient Glow Shield Card */}
+                {/* Gold-Emerald Ambient Glow Shield Card (Same visualization as Chairman!) */}
                 <div className="group relative p-5 rounded-[2.2rem] bg-gradient-to-br from-white via-amber-50/30 to-emerald-50/50 border border-amber-500/40 hover:border-emerald-600/60 shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col sm:flex-row items-center gap-5 overflow-hidden">
                   <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-amber-400/20 blur-2xl group-hover:bg-emerald-500/30 transition-all duration-500" />
                   
@@ -99,7 +101,7 @@ export const LeadershipHighlight: React.FC = () => {
                   <div className="text-left space-y-2 flex-1">
                     <div>
                       <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-900 bg-amber-100 px-2.5 py-0.5 rounded-full border border-amber-300">
-                        FOUNDER
+                        {leader.id === 'biju-sivanandan' ? 'FOUNDER' : 'DIRECTOR & FOUNDER'}
                       </span>
                       <h4 className="font-heading font-extrabold text-xl text-slate-950 group-hover:text-emerald-900 transition-colors leading-snug mt-1.5">
                         {leader.name}
@@ -189,7 +191,7 @@ export const LeadershipHighlight: React.FC = () => {
                 <h3 className="font-heading font-extrabold text-2xl text-slate-950 tracking-tight">
                   Our Team
                 </h3>
-                <p className="text-xs text-slate-600 font-medium">Departmental directors & operational chiefs leading day-to-day execution</p>
+                <p className="text-xs text-slate-600 font-medium">Departmental chiefs & operational strategists leading execution</p>
               </div>
             </div>
           </FadeIn>
