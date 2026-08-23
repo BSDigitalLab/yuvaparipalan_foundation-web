@@ -33,7 +33,7 @@ export const ImpactPage: React.FC = () => {
                 <span>Nationwide Roadmap</span>
               </div>
 
-              <h1 className="font-heading text-2xl sm:text-4xl font-extrabold text-slate-950 tracking-tight leading-tight">
+              <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight leading-tight">
                 2035 Impact Vision &{' '}
                 <span className="relative inline-block text-[#15803d] pb-0.5 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-1 after:bg-[#15803d] after:rounded-full">
                   Metrics Dashboard

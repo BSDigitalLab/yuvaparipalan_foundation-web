@@ -41,7 +41,7 @@ export const FocusAreas: React.FC = () => {
             <span className="text-xs font-mono font-semibold tracking-widest text-emerald-900 uppercase bg-emerald-100 px-3 py-1 rounded-full border border-emerald-300">
               16 Focus Spheres
             </span>
-            <h2 className="font-heading text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
               Comprehensive Youth & Society Empowerment
             </h2>
             <p className="text-slate-600 text-sm sm:text-base">

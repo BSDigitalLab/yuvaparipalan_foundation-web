@@ -107,7 +107,7 @@ export const VolunteerPage: React.FC = () => {
                   <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
                   <span>National Volunteer Movement</span>
                 </div>
-                <h1 className="font-heading text-4xl sm:text-5xl font-black text-slate-950 tracking-tight">
+                <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight">
                   Join 100,000 Changemakers
                 </h1>
                 <p className="text-slate-700 text-sm sm:text-base font-semibold leading-relaxed">

@@ -44,7 +44,7 @@ export const ProgramsPage: React.FC = () => {
               <span className="text-xs font-mono font-semibold tracking-widest text-emerald-900 uppercase bg-emerald-100 px-3 py-1 rounded-full border border-emerald-300">
                 Core Initiatives
               </span>
-              <h1 className="font-heading text-4xl sm:text-6xl font-extrabold text-slate-900 tracking-tight">
+              <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
                 Our 8 Flagship Missions
               </h1>
               <p className="text-slate-700 text-base sm:text-lg font-medium">

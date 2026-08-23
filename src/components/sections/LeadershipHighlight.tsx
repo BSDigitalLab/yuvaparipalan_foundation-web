@@ -30,7 +30,7 @@ export const LeadershipHighlight: React.FC = () => {
               </div>
 
               {/* "OUR LEADERSHIP" Headline */}
-              <h2 className="font-heading text-4xl sm:text-6xl font-black text-slate-950 tracking-tight flex items-center gap-3 pt-1">
+              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight flex items-center gap-3 pt-1">
                 <span className="relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-1.5 after:bg-[#15803d]">
                   OUR
                 </span>

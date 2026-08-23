@@ -22,7 +22,7 @@ export const ImpactCounter: React.FC = () => {
             <span className="text-xs font-mono font-semibold tracking-widest text-emerald-900 uppercase bg-emerald-100 px-3 py-1 rounded-full border border-emerald-300">
               Impact Goals 2035
             </span>
-            <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
               Bold, Measurable & Transformative Goals
             </h2>
             <p className="text-slate-600 text-sm sm:text-base">

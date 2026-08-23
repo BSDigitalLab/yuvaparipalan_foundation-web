@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import { SEOHead } from '../components/common/SEOHead';
 import { GALLERY_ITEMS } from '../data/mockData';
-import { useAppStore } from '../stores/useAppStore';
-import { LightboxModal } from '../components/common/LightboxModal';
 import { FadeIn } from '../components/motion/FadeIn';
-import { Maximize2, Tag, Calendar, MapPin } from 'lucide-react';
-import { cn } from '../utils/cn';
+import { LightboxModal } from '../components/common/LightboxModal';
+import { useAppStore } from '../stores/useAppStore';
+import { Camera, Sparkles } from 'lucide-react';
 
 export const GalleryPage: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const { openLightbox } = useAppStore();
 
   const filteredItems = GALLERY_ITEMS.filter(
-    (item) => activeCategory === 'all' || item.category === activeCategory
+    (item) => selectedCategory === 'all' || item.category === selectedCategory
   );
 
   return (
@@ -22,17 +21,27 @@ export const GalleryPage: React.FC = () => {
         description="Browse photo highlights from Yuvaparipalan Foundation events, state minister inaugurations, AI workshops, and awards ceremonies."
       />
 
-      <div className="pt-32 pb-24 bg-slate-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="pt-24 sm:pt-32 pb-20 sm:pb-24 bg-[#f8faf8] relative overflow-hidden">
+        {/* Background Ambient Radial Lighting */}
+        <div 
+          className="absolute top-1/6 left-1/2 -translate-x-1/2 w-[800px] h-[500px] pointer-events-none opacity-20"
+          style={{
+            background: 'radial-gradient(circle, rgba(21, 128, 61, 0.35) 0%, rgba(16, 185, 129, 0.08) 50%, transparent 80%)',
+            filter: 'blur(80px)',
+          }}
+        />
+
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
           <FadeIn direction="up">
-            <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
-              <span className="text-xs font-mono font-semibold tracking-widest text-emerald-400 uppercase bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
-                Visual Archives
-              </span>
-              <h1 className="font-heading text-4xl sm:text-6xl font-extrabold text-white tracking-tight">
+            <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-950 border border-emerald-300 text-xs font-mono font-bold uppercase tracking-wider shadow-sm">
+                <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
+                <span>Visual Archives</span>
+              </div>
+              <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight">
                 Movement Photo Gallery
               </h1>
-              <p className="text-slate-300 text-base sm:text-lg">
+              <p className="text-slate-700 text-sm sm:text-base font-semibold leading-relaxed">
                 Capturing moments of inspiration, leadership conclaves, scholarship honors, and youth workshops across India.
               </p>
             </div>
@@ -50,55 +59,50 @@ export const GalleryPage: React.FC = () => {
             ].map((cat) => (
               <button
                 key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
-                className={cn(
-                  'px-4 py-2 rounded-xl text-xs font-medium transition-all focus:outline-none',
-                  activeCategory === cat.id
-                    ? 'bg-emerald-500 text-white font-semibold shadow-md shadow-emerald-500/20'
-                    : 'bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800'
-                )}
+                onClick={() => setSelectedCategory(cat.id)}
+                className={`px-4 py-2 rounded-full text-xs font-semibold transition-all ${
+                  selectedCategory === cat.id
+                    ? 'bg-[#15803d] text-white shadow-md'
+                    : 'bg-white text-slate-700 border border-slate-200 hover:border-emerald-500'
+                }`}
               >
                 {cat.label}
               </button>
             ))}
           </div>
 
-          {/* Gallery Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredItems.map((item, idx) => (
-              <FadeIn key={item.id} direction="up" delay={idx * 0.06}>
+          {/* Gallery Masonry Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredItems.map((item, index) => (
+              <FadeIn key={item.id} direction="up" delay={index * 0.05}>
                 <div
                   onClick={() => openLightbox(item)}
-                  className="group cursor-pointer rounded-3xl bg-slate-900 border border-slate-800 overflow-hidden shadow-xl hover:border-emerald-500/40 transition-all duration-300 relative"
+                  className="group cursor-pointer rounded-3xl bg-white border border-emerald-900/15 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 text-left"
                 >
-                  <div className="aspect-[4/3] overflow-hidden relative">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
                     <img
                       src={item.imageUrl}
                       alt={item.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
-
-                    <div className="absolute top-4 right-4 p-2.5 rounded-full bg-slate-950/80 backdrop-blur-md text-white opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
-                      <Maximize2 className="w-4 h-4" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                      <span className="text-xs text-emerald-300 font-mono flex items-center gap-1.5 font-bold">
+                        <Camera className="w-4 h-4" /> View High-Res Photo
+                      </span>
                     </div>
                   </div>
 
-                  <div className="p-6 space-y-3 relative -mt-12">
-                    <span className="text-[10px] font-mono text-emerald-400 uppercase bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
-                      {item.category.replace('_', ' ')}
-                    </span>
-                    <h3 className="font-heading font-bold text-lg text-white group-hover:text-emerald-400 transition-colors line-clamp-2">
-                      {item.title}
-                    </h3>
-                    <div className="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-slate-800/80">
-                      <span className="flex items-center gap-1">
-                        <MapPin className="w-3.5 h-3.5 text-emerald-400" /> {item.location}
-                      </span>
-                      <span className="flex items-center gap-1 font-mono text-[11px]">
-                        <Calendar className="w-3.5 h-3.5 text-slate-500" /> {new Date(item.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'short' })}
+                  <div className="p-5 space-y-2">
+                    <div className="flex items-center justify-between text-xs text-slate-500 font-mono">
+                      <span>{item.date}</span>
+                      <span className="px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200 text-emerald-800 font-bold">
+                        {item.location}
                       </span>
                     </div>
+
+                    <h3 className="font-heading font-bold text-base text-slate-950 group-hover:text-[#15803d] transition-colors leading-snug">
+                      {item.title}
+                    </h3>
                   </div>
                 </div>
               </FadeIn>
@@ -107,6 +111,7 @@ export const GalleryPage: React.FC = () => {
         </div>
       </div>
 
+      {/* Lightbox Modal */}
       <LightboxModal />
     </>
   );
