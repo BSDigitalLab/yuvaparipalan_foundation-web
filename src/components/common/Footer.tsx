@@ -154,7 +154,16 @@ export const Footer: React.FC = () => {
               rel="noopener noreferrer" 
               className="hover:text-white transition-colors"
             >
-              Privacy & Terms
+              Privacy Policy
+            </a>
+            <span className="text-emerald-800/80">|</span>
+            <a 
+              href="https://www.yuvaparipalan.com/terms" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-white transition-colors"
+            >
+              Terms & Conditions
             </a>
           </div>
         </div>
