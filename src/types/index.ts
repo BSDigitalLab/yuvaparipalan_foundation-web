@@ -79,8 +79,11 @@ export interface IndustryExpertVideo {
   role: string;
   location: string;
   title: string;
-  youtubeId: string;
-  youtubeUrl: string;
+  videoType?: 'youtube' | 'instagram';
+  youtubeId?: string;
+  youtubeUrl?: string;
+  instagramCode?: string;
+  instagramUrl?: string;
   thumbnailUrl?: string;
   avatarUrl: string;
   category: string;

@@ -2,7 +2,15 @@ import React, { useState } from 'react';
 import { INDUSTRY_EXPERT_VIDEOS } from '../../data/mockData';
 import { IndustryExpertVideo } from '../../types';
 import { FadeIn } from '../motion/FadeIn';
-import { Play, ChevronLeft, ChevronRight, MapPin, Sparkles, X, Volume2 } from 'lucide-react';
+import { Play, ChevronLeft, ChevronRight, MapPin, Sparkles, X, Volume2, ExternalLink } from 'lucide-react';
+
+const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+  </svg>
+);
 
 export const SuccessStories: React.FC = () => {
   const [activeVideoIndex, setActiveVideoIndex] = useState(0);
@@ -86,78 +94,95 @@ export const SuccessStories: React.FC = () => {
 
         {/* 3 Videos Row Grid Set */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {visibleVideos.map((video, index) => (
-            <FadeIn key={video.id} direction="up" delay={index * 0.08}>
-              <div
-                onClick={() => setModalVideo(video)}
-                className="group cursor-pointer rounded-3xl bg-white border border-emerald-900/15 hover:border-emerald-700/50 shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden h-full text-left"
-              >
-                {/* YouTube Video Poster Frame with Custom Play Button */}
-                <div className="relative aspect-video w-full overflow-hidden bg-slate-950">
-                  <img
-                    src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
-                    alt={video.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
-                  />
+          {visibleVideos.map((video, index) => {
+            const posterSrc = video.videoType === 'instagram'
+              ? (video.thumbnailUrl || video.avatarUrl)
+              : `https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`;
 
-                  {/* Soft Gradient Mask Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
-
-                  {/* Duration Tag */}
-                  {video.duration && (
-                    <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-slate-950/85 text-white text-[11px] font-mono font-bold border border-white/20 backdrop-blur-sm flex items-center gap-1 shadow-sm">
-                      <Volume2 className="w-3 h-3 text-emerald-400" />
-                      <span>{video.duration}</span>
-                    </div>
-                  )}
-
-                  {/* Category Pill */}
-                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-emerald-950/90 text-emerald-300 text-[10px] font-mono font-bold uppercase tracking-wider border border-emerald-500/40 backdrop-blur-sm shadow-sm">
-                    {video.category}
-                  </div>
-
-                  {/* Centered Glowing Play Button Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#15803d] text-white flex items-center justify-center shadow-[0_0_25px_rgba(21,128,61,0.6)] group-hover:scale-110 group-hover:bg-emerald-600 transition-all duration-300 ring-4 ring-white/30">
-                      <Play className="w-6 h-6 sm:w-7 sm:h-7 text-white fill-white ml-1" />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card Content & Speaker Details */}
-                <div className="p-5 sm:p-6 space-y-4 flex-1 flex flex-col justify-between">
-                  <div className="space-y-2">
-                    <h3 className="font-heading font-extrabold text-base sm:text-lg text-slate-950 group-hover:text-[#15803d] transition-colors leading-snug line-clamp-2">
-                      "{video.title}"
-                    </h3>
-                  </div>
-
-                  {/* Speaker Profile Details */}
-                  <div className="pt-4 border-t border-slate-100 flex items-center gap-3.5">
+            return (
+              <FadeIn key={video.id} direction="up" delay={index * 0.08}>
+                <div
+                  onClick={() => setModalVideo(video)}
+                  className="group cursor-pointer rounded-3xl bg-white border border-emerald-900/15 hover:border-emerald-700/50 shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden h-full text-left"
+                >
+                  {/* Video Poster Frame with Custom Play Button */}
+                  <div className="relative aspect-video w-full overflow-hidden bg-slate-950">
                     <img
-                      src={video.avatarUrl}
-                      alt={video.name}
+                      src={posterSrc}
+                      alt={video.title}
                       loading="lazy"
-                      className="w-12 h-12 rounded-2xl object-cover border-2 border-emerald-600/40 shadow-sm shrink-0"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
                     />
-                    <div className="flex-1 min-w-0">
-                      <h4 className="font-heading font-extrabold text-sm text-slate-950 truncate">
-                        {video.name}
-                      </h4>
-                      <p className="text-xs font-extrabold text-emerald-800 truncate">
-                        {video.role}
-                      </p>
-                      <div className="flex items-center gap-1 text-[11px] font-mono font-semibold text-slate-500 pt-0.5">
-                        <MapPin className="w-3 h-3 text-amber-600 shrink-0" />
-                        <span>{video.location}</span>
+
+                    {/* Soft Gradient Mask Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
+
+                    {/* Duration / Platform Tag */}
+                    <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-slate-950/85 text-white text-[11px] font-mono font-bold border border-white/20 backdrop-blur-sm flex items-center gap-1 shadow-sm">
+                      {video.videoType === 'instagram' ? (
+                        <>
+                          <InstagramIcon className="w-3 h-3 text-pink-400" />
+                          <span>Instagram Reel</span>
+                        </>
+                      ) : (
+                        <>
+                          <Volume2 className="w-3 h-3 text-emerald-400" />
+                          <span>{video.duration || '04:15'}</span>
+                        </>
+                      )}
+                    </div>
+
+                    {/* Category Pill */}
+                    <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-emerald-950/90 text-emerald-300 text-[10px] font-mono font-bold uppercase tracking-wider border border-emerald-500/40 backdrop-blur-sm shadow-sm">
+                      {video.category}
+                    </div>
+
+                    {/* Centered Glowing Play Button Overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full text-white flex items-center justify-center shadow-[0_0_25px_rgba(21,128,61,0.6)] group-hover:scale-110 transition-all duration-300 ring-4 ring-white/30 ${
+                        video.videoType === 'instagram' 
+                          ? 'bg-gradient-to-tr from-amber-500 via-rose-600 to-purple-600 group-hover:from-amber-600 group-hover:to-purple-700' 
+                          : 'bg-[#15803d] group-hover:bg-emerald-600'
+                      }`}>
+                        <Play className="w-6 h-6 sm:w-7 sm:h-7 text-white fill-white ml-1" />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Card Content & Speaker Details */}
+                  <div className="p-5 sm:p-6 space-y-4 flex-1 flex flex-col justify-between">
+                    <div className="space-y-2">
+                      <h3 className="font-heading font-extrabold text-base sm:text-lg text-slate-950 group-hover:text-[#15803d] transition-colors leading-snug line-clamp-2">
+                        "{video.title}"
+                      </h3>
+                    </div>
+
+                    {/* Speaker Profile Details */}
+                    <div className="pt-4 border-t border-slate-100 flex items-center gap-3.5">
+                      <img
+                        src={video.avatarUrl}
+                        alt={video.name}
+                        loading="lazy"
+                        className="w-12 h-12 rounded-2xl object-cover border-2 border-emerald-600/40 shadow-sm shrink-0"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-heading font-extrabold text-sm text-slate-950 truncate">
+                          {video.name}
+                        </h4>
+                        <p className="text-xs font-extrabold text-emerald-800 truncate">
+                          {video.role}
+                        </p>
+                        <div className="flex items-center gap-1 text-[11px] font-mono font-semibold text-slate-500 pt-0.5">
+                          <MapPin className="w-3 h-3 text-amber-600 shrink-0" />
+                          <span>{video.location}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </FadeIn>
-          ))}
+              </FadeIn>
+            );
+          })}
         </div>
 
         {/* Carousel Pagination Dots */}
@@ -178,7 +203,7 @@ export const SuccessStories: React.FC = () => {
 
       </div>
 
-      {/* Broadcast Quality Interactive YouTube Player Modal */}
+      {/* Broadcast Quality Interactive Video Player Modal */}
       {modalVideo && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md animate-fadeIn">
           <div className="max-w-4xl w-full bg-slate-900 border border-emerald-500/30 rounded-3xl p-4 sm:p-6 space-y-4 shadow-2xl relative text-left">
@@ -207,16 +232,42 @@ export const SuccessStories: React.FC = () => {
               </button>
             </div>
 
-            {/* 16:9 YouTube Embed Iframe */}
-            <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-black border border-slate-800 shadow-inner">
-              <iframe
-                src={`https://www.youtube-nocookie.com/embed/${modalVideo.youtubeId}?autoplay=1&rel=0`}
-                title={modalVideo.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full border-0"
-              />
-            </div>
+            {/* Video Player Embed (Instagram Reel or YouTube Iframe) */}
+            {modalVideo.videoType === 'instagram' ? (
+              <div className="space-y-4">
+                <div className="relative w-full max-w-sm sm:max-w-md mx-auto aspect-[9/16] h-[520px] rounded-2xl overflow-hidden bg-black border border-slate-800 shadow-inner flex items-center justify-center">
+                  <iframe
+                    src={`https://www.instagram.com/reel/${modalVideo.instagramCode}/embed`}
+                    title={modalVideo.title}
+                    allowTransparency
+                    allow="encrypted-media"
+                    className="w-full h-full border-0 rounded-2xl"
+                  />
+                </div>
+                <div className="flex justify-center">
+                  <a
+                    href={modalVideo.instagramUrl || `https://www.instagram.com/reel/${modalVideo.instagramCode}/`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 text-white font-bold text-xs shadow-md hover:scale-105 transition-all"
+                  >
+                    <InstagramIcon className="w-4 h-4" />
+                    <span>Watch Full Reel on Instagram</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+            ) : (
+              <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-black border border-slate-800 shadow-inner">
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${modalVideo.youtubeId}?autoplay=1&rel=0`}
+                  title={modalVideo.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full border-0"
+                />
+              </div>
+            )}
 
             {/* Modal Footer Title */}
             <div className="pt-2 flex items-center justify-between text-xs text-slate-400 font-medium">
