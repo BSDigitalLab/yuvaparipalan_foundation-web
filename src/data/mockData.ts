@@ -604,7 +604,7 @@ export const INDUSTRY_EXPERT_VIDEOS: IndustryExpertVideo[] = [
   {
     id: 'vid-1',
     name: 'Adv. Bindhu Krishna',
-    role: 'Senior Leader & Social Activist',
+    role: 'Minister & Senior Leader',
     location: 'Kollam, Kerala',
     title: 'Women & Youth Empowerment Keynote',
     videoType: 'instagram',
