@@ -24,19 +24,7 @@ export const Footer: React.FC = () => {
               "Every Youth is a Possibility. Every Possibility Creates Change. Every Change Builds a Better India."
             </p>
 
-            <div className="text-xs text-emerald-300/80 space-y-1">
-              <p>Section 8 Company under Companies Act, 2013.</p>
-              <p>Evolved from Palana Educational Charitable Trust (Est. 2016 by Mr. Biju A. Sivanandan).</p>
-            </div>
 
-            <div className="flex flex-wrap items-center gap-2 pt-2">
-              <span className="px-2.5 py-1 rounded-full text-xs font-mono bg-emerald-500/20 text-emerald-200 border border-emerald-500/30 flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5" /> 8 Flagship Missions
-              </span>
-              <span className="px-2.5 py-1 rounded-full text-xs font-mono bg-emerald-950/60 text-emerald-300 border border-emerald-800 flex items-center gap-1.5">
-                <Globe className="w-3.5 h-3.5" /> UN SDG Aligned
-              </span>
-            </div>
           </div>
 
           {/* Column 2: Flagship Missions */}
