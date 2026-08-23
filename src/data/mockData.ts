@@ -560,30 +560,30 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: 'g4',
-    title: 'Shepreneurs Summit & Micro-Investment Grant Launch',
-    category: 'events',
-    date: '2026-01-18',
-    imageUrl: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1000&auto=format&fit=crop',
-    location: 'Coimbatore, Tamil Nadu',
-    description: 'Women entrepreneurs presenting digital business models for micro-grant awards.'
+    title: 'Official Flag-Off of Movement Drive by Shri P.K. Kunhalikutty',
+    category: 'vip_visits',
+    date: '2025-11-28',
+    imageUrl: '/events/Flag_off_by_P.K_Kunjalikutty.png',
+    location: 'Malappuram, Kerala',
+    description: 'The statewide Yuvaparipalan Foundation youth empowerment campaign was officially flagged off by Shri P.K. Kunhalikutty, Minister for Industries and Information Technology. This historic flag-off highlights strategic backing for youth skill development, digital entrepreneurship, and grassroots community transformation.'
   },
   {
     id: 'g5',
-    title: 'Statewide Merit Scholarship Award Ceremony',
-    category: 'awards',
-    date: '2026-02-02',
-    imageUrl: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1000&auto=format&fit=crop',
-    location: 'Ernakulam, Kerala',
-    description: 'Awarding 500 merit scholarships to exceptional students from underprivileged backgrounds.'
+    title: 'Strategic Project Consultation & Advisory Meeting with Shri K. Muraleedharan',
+    category: 'events',
+    date: '2025-12-18',
+    imageUrl: '/events/Project_meeting_with_K.Muraleedharan.png',
+    location: 'Thiruvananthapuram, Kerala',
+    description: 'A high-level strategic project consultation meeting convened with Shri K. Muraleedharan, senior legislator and former Minister. The session focused on formulating state-level career guidance roadmaps, public health outreach frameworks, and educational mentorship programs.'
   },
   {
     id: 'g6',
-    title: 'National Volunteer Movement Grassroots Drive',
-    category: 'community',
-    date: '2026-02-14',
-    imageUrl: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=1000&auto=format&fit=crop',
-    location: 'Kollam, Kerala',
-    description: 'Youth volunteers organizing preventive healthcare awareness and career mentoring camps.'
+    title: 'Official Launching of Palana Neurosync Amruth Preventive Healthcare Initiative',
+    category: 'workshops',
+    date: '2026-01-10',
+    imageUrl: '/events/Palana Neurosync Amruth Launching.png',
+    location: 'Palakkad, Kerala',
+    description: 'Official inauguration and unveiling of the Palana Neurosync Amruth healthcare and mental wellness initiative. Designed in collaboration with senior neurosurgeons and medical experts, the mission brings free preventive health screenings, brain health awareness, and emotional well-being counseling to communities.'
   },
 ];
 
