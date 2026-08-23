@@ -560,21 +560,21 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: 'g4',
-    title: 'Official Flag-Off of Movement Drive by Shri P.K. Kunhalikutty',
+    title: 'Official Flag-Off of Movement Drive by Shri P.K. Kunhalikutty, Minister for Industries, Commerce & IT',
     category: 'vip_visits',
     date: '2025-11-28',
     imageUrl: '/events/Flag_off_by_P.K_Kunjalikutty.png',
     location: 'Malappuram, Kerala',
-    description: 'The statewide Yuvaparipalan Foundation youth empowerment campaign was officially flagged off by Shri P.K. Kunhalikutty, Minister for Industries and Information Technology. This historic flag-off highlights strategic backing for youth skill development, digital entrepreneurship, and grassroots community transformation.'
+    description: 'The statewide Yuvaparipalan Foundation youth empowerment campaign was officially flagged off by Shri P.K. Kunhalikutty, Minister for Industries, Commerce, and Information Technology of Kerala. This historic flag-off highlights strategic backing for youth skill development, digital entrepreneurship, and grassroots community transformation.'
   },
   {
     id: 'g5',
-    title: 'Strategic Project Consultation & Advisory Meeting with Shri K. Muraleedharan',
+    title: 'Strategic Project Consultation & Advisory Meeting with Shri K. Muraleedharan, Minister for Health & Family Welfare',
     category: 'events',
     date: '2025-12-18',
     imageUrl: '/events/Project_meeting_with_K.Muraleedharan.png',
     location: 'Thiruvananthapuram, Kerala',
-    description: 'A high-level strategic project consultation meeting convened with Shri K. Muraleedharan, senior legislator and former Minister. The session focused on formulating state-level career guidance roadmaps, public health outreach frameworks, and educational mentorship programs.'
+    description: 'A high-level strategic project consultation meeting was convened with Shri K. Muraleedharan, Minister for Health, Family Welfare, and Devaswoms of Kerala. The session focused on formulating state-level career guidance roadmaps, public health outreach frameworks, and educational mentorship programs.'
   },
   {
     id: 'g6',
