@@ -117,7 +117,7 @@ export const ExpertVoice: React.FC = () => {
                     {/* Soft Gradient Mask Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
 
-                    {/* Duration / Platform Tag */}
+                    {/* Platform Tag */}
                     <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-slate-950/85 text-white text-[11px] font-mono font-bold border border-white/20 backdrop-blur-sm flex items-center gap-1 shadow-sm">
                       {video.videoType === 'instagram' ? (
                         <>
@@ -220,7 +220,7 @@ export const ExpertVoice: React.FC = () => {
                   <h3 className="font-heading font-extrabold text-base sm:text-lg text-white">
                     {modalVideo.name}
                   </h3>
-                  <p className="text-xs text-emerald-400 font-bold">{modalVideo.role} ({modalVideo.location})</p>
+                  <p className="text-xs text-emerald-400 font-bold">{modalVideo.role} • {modalVideo.location}</p>
                 </div>
               </div>
               <button
@@ -235,7 +235,7 @@ export const ExpertVoice: React.FC = () => {
             {/* Video Player Embed (Instagram Reel or YouTube Iframe) */}
             {modalVideo.videoType === 'instagram' ? (
               <div className="space-y-4">
-                <div className="relative w-full max-w-sm sm:max-w-md mx-auto aspect-[9/16] h-[520px] rounded-2xl overflow-hidden bg-black border border-slate-800 shadow-inner flex items-center justify-center">
+                <div className="relative w-full max-w-sm sm:max-w-md mx-auto aspect-[9/16] h-[500px] rounded-2xl overflow-hidden bg-black border border-slate-800 shadow-inner flex items-center justify-center">
                   <iframe
                     src={`https://www.instagram.com/reel/${modalVideo.instagramCode}/embed`}
                     title={modalVideo.title}
@@ -244,7 +244,7 @@ export const ExpertVoice: React.FC = () => {
                     className="w-full h-full border-0 rounded-2xl"
                   />
                 </div>
-                <div className="flex justify-center">
+                <div className="flex justify-center pt-1">
                   <a
                     href={modalVideo.instagramUrl || `https://www.instagram.com/reel/${modalVideo.instagramCode}/`}
                     target="_blank"
@@ -252,7 +252,7 @@ export const ExpertVoice: React.FC = () => {
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 text-white font-bold text-xs shadow-md hover:scale-105 transition-all"
                   >
                     <InstagramIcon className="w-4 h-4" />
-                    <span>Watch Full Reel on Instagram</span>
+                    <span>Watch on Instagram</span>
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>
@@ -268,12 +268,6 @@ export const ExpertVoice: React.FC = () => {
                 />
               </div>
             )}
-
-            {/* Modal Footer Title */}
-            <div className="pt-2 flex items-center justify-between text-xs text-slate-400 font-medium">
-              <span className="text-slate-200 font-bold truncate pr-4">{modalVideo.title}</span>
-              <span className="font-mono text-emerald-400 shrink-0">{modalVideo.category}</span>
-            </div>
 
           </div>
         </div>
