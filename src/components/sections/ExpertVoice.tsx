@@ -57,9 +57,9 @@ export const ExpertVoice: React.FC = () => {
 
               <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-950 tracking-tight flex flex-wrap items-center gap-2.5 pt-1">
                 <span className="relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-1 after:bg-[#15803d]">
-                  VOICE OF
+                  Voice of
                 </span>
-                <span className="text-[#15803d]">INDUSTRY EXPERTS</span>
+                <span className="text-[#15803d]">Industry Experts</span>
               </h2>
 
               <p className="text-slate-700 text-sm sm:text-base font-semibold leading-relaxed">
