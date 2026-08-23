@@ -73,7 +73,7 @@ export const LeadershipHighlight: React.FC = () => {
                   <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-amber-400/20 blur-2xl group-hover:bg-emerald-500/30 transition-all duration-500" />
                   
                   {/* Photo Frame: Botanical Leaf Ring */}
-                  <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-[2rem_0.8rem_2rem_0.8rem] overflow-hidden bg-slate-100 ring-4 ring-amber-500/40 group-hover:ring-emerald-600/60 transition-all duration-300 shrink-0 shadow-md">
+                  <div className="relative w-32 h-32 sm:w-32 sm:h-32 rounded-[2rem_0.8rem_2rem_0.8rem] overflow-hidden bg-slate-100 ring-4 ring-amber-500/40 group-hover:ring-emerald-600/60 transition-all duration-300 shrink-0 shadow-md">
                     <img
                       src={leader.avatarUrl}
                       alt={leader.name}

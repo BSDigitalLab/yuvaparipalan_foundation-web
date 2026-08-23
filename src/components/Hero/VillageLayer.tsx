@@ -25,7 +25,7 @@ export const VillageLayer: React.FC<VillageLayerProps> = ({ scrollY, mouseX, mou
         alt="Kerala Awakening Village"
         loading="eager"
         decoding="async"
-        className="w-full max-w-full h-full object-fill object-bottom"
+        className="w-full max-w-full h-full object-cover sm:object-fill object-bottom"
         onError={(e) => {
           (e.target as HTMLImageElement).src = '/bg_images/village.png';
         }}

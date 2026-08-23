@@ -71,7 +71,7 @@ export const HeroContent: React.FC = () => {
             <img
               src="/brands/playstore_google.png"
               alt="Get it on Google Play"
-              className="w-full h-full object-fill rounded-2xl block p-0 m-0"
+              className="w-full h-full object-contain sm:object-fill rounded-2xl block p-0 m-0"
             />
           </a>
         </div>
