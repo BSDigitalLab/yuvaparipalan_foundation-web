@@ -18,14 +18,14 @@ export const VillageLayer: React.FC<VillageLayerProps> = ({ scrollY, mouseX, mou
         x: mouseX,
         translateY: mouseY,
       }}
-      className="absolute inset-0 w-full h-full z-[4] pointer-events-none overflow-hidden will-change-transform flex items-end justify-center"
+      className="absolute inset-0 w-full max-w-full h-full z-[4] pointer-events-none overflow-hidden will-change-transform flex items-end justify-center"
     >
       <img
         src="/bg_images/bg_home_village.png"
         alt="Kerala Awakening Village"
         loading="eager"
         decoding="async"
-        className="w-full w-screen h-full min-w-full min-h-full object-cover object-bottom"
+        className="w-full max-w-full h-full object-fill object-bottom"
         onError={(e) => {
           (e.target as HTMLImageElement).src = '/bg_images/village.png';
         }}
