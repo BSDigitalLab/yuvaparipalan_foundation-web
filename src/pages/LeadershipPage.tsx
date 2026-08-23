@@ -25,7 +25,7 @@ export const LeadershipPage: React.FC = () => {
           }}
         />
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10 space-y-12">
           
           {/* Header Banner */}
           <FadeIn direction="up">
@@ -85,25 +85,25 @@ export const LeadershipPage: React.FC = () => {
                     </div>
 
                     {/* Leader Details */}
-                    <div className="text-left space-y-2 flex-1 min-w-0">
+                    <div className="text-left space-y-1.5 flex-1 min-w-0">
                       <div>
-                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-900 bg-amber-100 px-2.5 py-0.5 rounded-full border border-amber-300">
+                        <span className="inline-block text-[10px] font-mono font-bold uppercase tracking-wider text-amber-900 bg-amber-100 px-2.5 py-0.5 rounded-full border border-amber-300">
                           {leader.id === 'biju-sivanandan' 
                             ? 'FOUNDER' 
                             : leader.id === 'manoj-rohini' || leader.id === 'manikandan-p'
                             ? 'DIRECTOR & FOUNDER' 
                             : 'OUR TEAM'}
                         </span>
-                        <h3 className="font-heading font-extrabold text-xl text-slate-950 group-hover:text-emerald-900 transition-colors leading-snug mt-1.5 truncate">
+                        <h3 className="font-heading font-extrabold text-lg sm:text-xl text-slate-950 group-hover:text-emerald-900 transition-colors leading-snug mt-1">
                           {leader.name}
                         </h3>
-                        <p className="text-xs font-extrabold text-emerald-800 leading-tight">
+                        <p className="text-xs font-extrabold text-emerald-800 leading-relaxed mt-0.5">
                           {leader.role}
                         </p>
                       </div>
 
-                      <div className="flex items-center gap-1 text-[11px] font-mono font-semibold text-slate-600 pt-1">
-                        <MapPin className="w-3.5 h-3.5 text-amber-600" />
+                      <div className="flex items-center gap-1 text-[11px] font-mono font-semibold text-slate-600 pt-0.5">
+                        <MapPin className="w-3.5 h-3.5 text-amber-600 shrink-0" />
                         <span>{leader.location}</span>
                       </div>
                     </div>

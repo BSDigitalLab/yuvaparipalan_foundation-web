@@ -113,7 +113,7 @@ export const AboutPage: React.FC = () => {
           }}
         />
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10 sm:space-y-12">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10 space-y-10 sm:space-y-12">
           
           {/* Standardized Compact Hero Header Banner */}
           <FadeIn direction="up">
