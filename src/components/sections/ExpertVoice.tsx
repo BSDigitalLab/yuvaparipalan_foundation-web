@@ -50,11 +50,6 @@ export const ExpertVoice: React.FC = () => {
         <FadeIn direction="up">
           <div className="pb-4 border-b border-emerald-900/10 text-left">
             <div className="space-y-2 max-w-3xl">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-950 border border-emerald-300 text-xs font-mono font-bold uppercase tracking-wider shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
-                <span>Mentorship Perspectives & Video Insights</span>
-              </div>
-
               <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-950 tracking-tight flex flex-wrap items-center gap-2.5 pt-1">
                 <span className="relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-1 after:bg-[#15803d]">
                   Voice of
