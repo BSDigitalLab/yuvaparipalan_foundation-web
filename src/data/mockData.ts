@@ -533,21 +533,21 @@ export const PARTNERS_LIST = [
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: 'g1',
-    title: 'Kerala State Minister Inauguration & Flag Unveiling',
+    title: 'Kerala Chief Minister Unveiling the Flag',
     category: 'vip_visits',
     date: '2025-11-15',
     imageUrl: '/events/yp_vd_satheeshan.png',
     location: 'Thiruvananthapuram, Kerala',
-    description: 'Yuvaparipalan Foundation movement flag officially unveiled by Kerala state ministers and senior leaders.'
+    description: 'Yuvaparipalan Foundation movement flag officially unveiled by the Chief Minister of Kerala.'
   },
   {
     id: 'g2',
-    title: 'Indian Senior Chamber Leadership Conclave & VIP Dignitaries',
+    title: 'Handing Over Memento to Ramesh Chennithala, Minister for Home Affairs and Vigilance of Kerala',
     category: 'events',
     date: '2025-10-20',
     imageUrl: '/events/yp_ramesh_chennithala.png',
     location: 'Thrissur, Kerala',
-    description: 'Special felicitation ceremony and lamps lighting by Ramesh Chennithala and senior community leaders.'
+    description: 'Handing over memento to Ramesh Chennithala, Minister for Home Affairs and Vigilance of Kerala.'
   },
   {
     id: 'g3',
