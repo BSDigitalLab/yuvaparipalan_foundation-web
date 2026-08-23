@@ -100,9 +100,9 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Column 5: Contact Information & Direct Channels (Far Right) */}
+          {/* Column 5: Direct Channels (Far Right) */}
           <div className="space-y-4">
-            <h3 className="font-heading font-bold text-white text-base">Contact & Connect</h3>
+            <h3 className="font-heading font-bold text-white text-base">Connect</h3>
             <ul className="space-y-3.5 text-xs text-emerald-200/90">
               <li>
                 <a 
