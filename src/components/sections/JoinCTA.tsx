@@ -11,11 +11,6 @@ export const JoinCTA: React.FC = () => {
         <FadeIn direction="up">
           <div className="p-8 sm:p-16 rounded-3xl bg-gradient-to-br from-emerald-900 via-green-900 to-emerald-950 text-white border border-emerald-700/40 shadow-2xl text-center max-w-5xl mx-auto space-y-8 relative overflow-hidden">
             
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-800/80 border border-emerald-600/60 text-emerald-100 text-xs sm:text-sm font-semibold">
-              <Sparkles className="w-4 h-4 text-amber-300" />
-              <span>Be Part of the Nation-Building Movement</span>
-            </div>
-
             <h2 className="font-heading text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-tight">
               Ready to Shape India's Future?
             </h2>
