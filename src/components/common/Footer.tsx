@@ -148,7 +148,14 @@ export const Footer: React.FC = () => {
               Build with <Heart className="w-3.5 h-3.5 text-rose-400 fill-rose-400" /> by Branding Sparrow
             </span>
             <span className="text-emerald-800/80">|</span>
-            <Link to="/contact" className="hover:text-white transition-colors">Privacy & Terms</Link>
+            <a 
+              href="https://www.yuvaparipalan.com/privacy-policy" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-white transition-colors"
+            >
+              Privacy & Terms
+            </a>
           </div>
         </div>
       </div>
