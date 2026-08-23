@@ -166,7 +166,7 @@ export const ExpertVoice: React.FC = () => {
               <ChevronLeft className="w-5 h-5 text-emerald-800" />
             </button>
 
-            <div className="flex items-center gap-2.5 bg-white px-4 py-2 rounded-full border border-emerald-900/15 shadow-sm">
+            <div className="flex items-center gap-2.5 bg-white px-4 py-2.5 rounded-full border border-emerald-900/15 shadow-sm">
               {Array.from({ length: maxPages }).map((_, idx) => (
                 <button
                   key={idx}
@@ -179,9 +179,6 @@ export const ExpertVoice: React.FC = () => {
                   aria-label={`Go to slide set ${idx + 1}`}
                 />
               ))}
-              <span className="text-xs font-mono font-bold text-slate-600 ml-1.5 pl-2.5 border-l border-slate-200">
-                0{activeVideoIndex + 1} / 0{maxPages}
-              </span>
             </div>
 
             <button
