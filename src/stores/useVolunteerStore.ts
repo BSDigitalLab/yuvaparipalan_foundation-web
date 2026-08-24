@@ -20,7 +20,7 @@ const initialData: Partial<VolunteerFormData> = {
   email: '',
   phone: '',
   state: 'Kerala',
-  district: 'Kannur',
+  district: '',
   occupation: '',
   skills: [],
   interestAreas: [],

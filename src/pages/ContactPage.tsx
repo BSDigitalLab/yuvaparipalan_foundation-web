@@ -5,16 +5,28 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { FadeIn } from '../components/motion/FadeIn';
 import { Button } from '../components/ui/Button';
-import { MapPin, Phone, Mail, Send, CheckCircle2, Clock, Sparkles } from 'lucide-react';
+import { PhoneInput } from '../components/ui/PhoneInput';
+import { MapPin, Phone, Mail, Send, CheckCircle2, Clock, Sparkles, AlertCircle } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { sendSubmissionEmail } from '../services/emailService';
 
 const contactSchema = z.object({
-  fullName: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Please enter a valid email address'),
-  phone: z.string().min(10, 'Please enter a valid phone number'),
-  subject: z.string().min(3, 'Subject is required'),
-  message: z.string().min(10, 'Message must be at least 10 characters'),
+  fullName: z
+    .string()
+    .min(2, 'Full Name must be at least 2 characters')
+    .regex(/^[a-zA-Z\s\.\']{2,100}$/, 'Full Name should contain letters and spaces only'),
+  email: z
+    .string()
+    .min(1, 'Email address is required')
+    .email('Please enter a valid email address (e.g. name@domain.com)'),
+  phone: z
+    .string()
+    .regex(/^(?:\+91[\s-]?)?[6-9]\d{9}$/, 'Please enter a valid 10-digit phone number (starting with 6-9)'),
+  subject: z.string().min(3, 'Subject must be at least 3 characters'),
+  message: z
+    .string()
+    .min(10, 'Message must be at least 10 characters')
+    .max(2000, 'Message cannot exceed 2000 characters'),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
@@ -25,11 +37,16 @@ export const ContactPage: React.FC = () => {
   const {
     register,
     handleSubmit,
+    setValue,
+    watch,
     reset,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
+    mode: 'onTouched',
   });
+
+  const phoneValue = watch('phone') || '';
 
   const onSubmit = async (data: ContactFormData) => {
     await sendSubmissionEmail({ formType: 'contact', formData: data });
@@ -71,72 +88,78 @@ export const ContactPage: React.FC = () => {
             </div>
           </FadeIn>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            {/* Contact Information & Office Cards */}
-            <FadeIn direction="left">
-              <div className="space-y-6">
-                <div className="p-8 rounded-3xl bg-white border border-emerald-900/15 space-y-6 shadow-xl text-left">
-                  <h3 className="font-heading font-extrabold text-2xl text-slate-950">Movement Headquarters</h3>
-
-                  <div className="space-y-6 text-sm text-slate-700">
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300 shrink-0">
-                        <MapPin className="w-6 h-6 text-emerald-800" />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch max-w-6xl mx-auto">
+            {/* Contact Info Cards Column */}
+            <FadeIn direction="right" className="lg:col-span-5 flex flex-col h-full">
+              <div className="p-6 sm:p-8 rounded-3xl bg-white border border-emerald-900/15 shadow-xl space-y-6 flex flex-col justify-between h-full">
+                <div>
+                  <h3 className="font-heading font-extrabold text-2xl text-slate-950 mb-6">Movement Headquarters</h3>
+                  
+                  <div className="space-y-4 text-xs sm:text-sm">
+                    <div className="flex items-start gap-3.5">
+                      <div className="p-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300 shrink-0">
+                        <MapPin className="w-5 h-5 text-emerald-800" />
                       </div>
                       <div>
-                        <strong className="text-slate-950 text-base block font-bold">Kannur Office (Kerala)</strong>
-                        <p className="text-xs text-slate-600 mt-1 leading-relaxed font-medium">
+                        <h4 className="font-bold text-slate-950 text-sm">Kannur Office (Kerala)</h4>
+                        <p className="text-slate-600 font-medium leading-relaxed mt-0.5">
                           Door no 5/430 D, Madappurachal, Manathana PO, Kannur Dist, Kerala - 670674
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-4 pt-4 border-t border-slate-100">
-                      <div className="p-3 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300 shrink-0">
-                        <MapPin className="w-6 h-6 text-emerald-800" />
+                    <div className="flex items-start gap-3.5">
+                      <div className="p-2.5 rounded-2xl bg-amber-100 text-amber-900 border border-amber-300 shrink-0">
+                        <MapPin className="w-5 h-5 text-amber-800" />
                       </div>
                       <div>
-                        <strong className="text-slate-950 text-base block font-bold">Coimbatore Office (Tamil Nadu)</strong>
-                        <p className="text-xs text-slate-600 mt-1 leading-relaxed font-medium">
+                        <h4 className="font-bold text-slate-950 text-sm">Coimbatore Office (Tamil Nadu)</h4>
+                        <p className="text-slate-600 font-medium leading-relaxed mt-0.5">
                           #3, Sri Mahalakshmi Garden, Saravanampatti, Coimbatore, Tamil Nadu - 641035
                         </p>
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-100">
-                      <a href="tel:+919562858868" className="p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-500 transition-colors flex items-center gap-3">
+                    <div className="flex items-center gap-3.5">
+                      <div className="p-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300 shrink-0">
                         <Phone className="w-5 h-5 text-emerald-800" />
-                        <div>
-                          <span className="text-[11px] text-slate-500 block font-mono">Hotline</span>
-                          <strong className="text-xs text-slate-950 font-bold">+91 95628 58868</strong>
-                        </div>
-                      </a>
-
-                      <a href="mailto:hello@yuvaparipalan.org" className="p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-500 transition-colors flex items-center gap-3">
-                        <Mail className="w-5 h-5 text-emerald-800" />
-                        <div>
-                          <span className="text-[11px] text-slate-500 block font-mono">Email Inquiries</span>
-                          <strong className="text-xs text-slate-950 font-bold">hello@yuvaparipalan.org</strong>
-                        </div>
-                      </a>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-slate-950 text-sm">Hotline</h4>
+                        <p className="text-slate-700 font-mono font-bold">+91 95628 58868</p>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                <div className="p-6 rounded-3xl bg-white border border-emerald-900/15 flex items-center gap-4 text-xs text-slate-700 shadow-md text-left">
-                  <Clock className="w-5 h-5 text-emerald-800 shrink-0" />
-                  <div>
-                    <strong className="text-slate-950 block font-bold">Working Hours</strong>
-                    Monday – Saturday: 9:00 AM – 6:00 PM IST
+                    <div className="flex items-center gap-3.5">
+                      <div className="p-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300 shrink-0">
+                        <Mail className="w-5 h-5 text-emerald-800" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-slate-950 text-sm">Email Inquiries</h4>
+                        <a href="mailto:hello@yuvaparipalan.org" className="text-[#15803d] hover:underline font-mono font-bold">
+                          hello@yuvaparipalan.org
+                        </a>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-3.5">
+                      <div className="p-2.5 rounded-2xl bg-slate-100 text-slate-700 border border-slate-300 shrink-0">
+                        <Clock className="w-5 h-5 text-slate-700" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-slate-950 text-sm">Working Hours</h4>
+                        <p className="text-slate-600 font-medium">Monday – Saturday: 9:00 AM – 6:00 PM IST</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </FadeIn>
 
-            {/* Interactive Contact Form */}
-            <FadeIn direction="right">
-              <div className="p-8 sm:p-10 rounded-3xl bg-white border border-emerald-900/15 shadow-xl space-y-6 text-left">
-                <h3 className="font-heading font-extrabold text-2xl text-slate-950">Send Us a Message</h3>
+            {/* Contact Form Column */}
+            <FadeIn direction="left" className="lg:col-span-7 flex flex-col h-full">
+              <div className="p-6 sm:p-8 rounded-3xl bg-white border border-emerald-900/15 shadow-xl flex flex-col justify-between h-full">
+                <h3 className="font-heading font-bold text-xl text-slate-950 mb-6">Send Us a Direct Message</h3>
 
                 {isSubmitted ? (
                   <div className="p-8 rounded-2xl bg-emerald-50 border border-emerald-300 text-center space-y-4 animate-fadeIn">
@@ -152,62 +175,105 @@ export const ContactPage: React.FC = () => {
                     </Button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-left">
                     <div>
-                      <label className="block text-xs font-bold text-slate-800 mb-1">Full Name</label>
+                      <label className="block text-xs font-bold text-slate-800 mb-1">
+                        Full Name <span className="text-rose-600">*</span>
+                      </label>
                       <input
                         {...register('fullName')}
                         type="text"
-                        placeholder="John Doe"
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-950 placeholder-slate-400 focus:outline-none focus:border-[#15803d] focus:bg-white text-sm font-medium"
+                        placeholder="Full Name"
+                        className={`w-full px-4 py-3 rounded-xl bg-slate-50 border text-slate-950 placeholder-slate-400 focus:outline-none text-sm font-medium transition-colors ${
+                          errors.fullName ? 'border-rose-500 bg-rose-50/20 focus:border-rose-600' : 'border-slate-200 focus:border-[#15803d] focus:bg-white'
+                        }`}
                       />
-                      {errors.fullName && <span className="text-xs text-rose-600 mt-1 block font-semibold">{errors.fullName.message}</span>}
+                      {errors.fullName && (
+                        <span className="text-xs text-rose-600 mt-1 flex items-center gap-1 font-semibold">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                          <span>{errors.fullName.message}</span>
+                        </span>
+                      )}
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-bold text-slate-800 mb-1">Email Address</label>
+                        <label className="block text-xs font-bold text-slate-800 mb-1">
+                          Email Address <span className="text-rose-600">*</span>
+                        </label>
                         <input
                           {...register('email')}
                           type="email"
-                          placeholder="john@example.com"
-                          className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-950 placeholder-slate-400 focus:outline-none focus:border-[#15803d] focus:bg-white text-sm font-medium"
+                          placeholder="Email Address"
+                          className={`w-full px-4 py-3 rounded-xl bg-slate-50 border text-slate-950 placeholder-slate-400 focus:outline-none text-sm font-medium transition-colors ${
+                            errors.email ? 'border-rose-500 bg-rose-50/20 focus:border-rose-600' : 'border-slate-200 focus:border-[#15803d] focus:bg-white'
+                          }`}
                         />
-                        {errors.email && <span className="text-xs text-rose-600 mt-1 block font-semibold">{errors.email.message}</span>}
+                        {errors.email && (
+                          <span className="text-xs text-rose-600 mt-1 flex items-center gap-1 font-semibold">
+                            <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                            <span>{errors.email.message}</span>
+                          </span>
+                        )}
                       </div>
 
                       <div>
-                        <label className="block text-xs font-bold text-slate-800 mb-1">Phone Number</label>
-                        <input
-                          {...register('phone')}
-                          type="tel"
-                          placeholder="+91 98765 43210"
-                          className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-950 placeholder-slate-400 focus:outline-none focus:border-[#15803d] focus:bg-white text-sm font-medium"
+                        <label className="block text-xs font-bold text-slate-800 mb-1">
+                          Phone Number <span className="text-rose-600">*</span>
+                        </label>
+                        <PhoneInput
+                          value={phoneValue}
+                          onChange={(val) => setValue('phone', val, { shouldValidate: true, shouldDirty: true })}
+                          error={!!errors.phone}
+                          placeholder="Mobile Number"
                         />
-                        {errors.phone && <span className="text-xs text-rose-600 mt-1 block font-semibold">{errors.phone.message}</span>}
+                        {errors.phone && (
+                          <span className="text-xs text-rose-600 mt-1 flex items-center gap-1 font-semibold">
+                            <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                            <span>{errors.phone.message}</span>
+                          </span>
+                        )}
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-slate-800 mb-1">Subject</label>
+                      <label className="block text-xs font-bold text-slate-800 mb-1">
+                        Subject <span className="text-rose-600">*</span>
+                      </label>
                       <input
                         {...register('subject')}
                         type="text"
-                        placeholder="Inquiry about Merit Scholarships / AI Mission"
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-950 placeholder-slate-400 focus:outline-none focus:border-[#15803d] focus:bg-white text-sm font-medium"
+                        placeholder="Subject"
+                        className={`w-full px-4 py-3 rounded-xl bg-slate-50 border text-slate-950 placeholder-slate-400 focus:outline-none text-sm font-medium transition-colors ${
+                          errors.subject ? 'border-rose-500 bg-rose-50/20 focus:border-rose-600' : 'border-slate-200 focus:border-[#15803d] focus:bg-white'
+                        }`}
                       />
-                      {errors.subject && <span className="text-xs text-rose-600 mt-1 block font-semibold">{errors.subject.message}</span>}
+                      {errors.subject && (
+                        <span className="text-xs text-rose-600 mt-1 flex items-center gap-1 font-semibold">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                          <span>{errors.subject.message}</span>
+                        </span>
+                      )}
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-slate-800 mb-1">Message</label>
+                      <label className="block text-xs font-bold text-slate-800 mb-1">
+                        Message <span className="text-rose-600">*</span>
+                      </label>
                       <textarea
                         {...register('message')}
                         rows={4}
-                        placeholder="Write your query here..."
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-950 placeholder-slate-400 focus:outline-none focus:border-[#15803d] focus:bg-white text-sm font-medium"
+                        placeholder="Write your message"
+                        className={`w-full px-4 py-3 rounded-xl bg-slate-50 border text-slate-950 placeholder-slate-400 focus:outline-none text-sm font-medium transition-colors ${
+                          errors.message ? 'border-rose-500 bg-rose-50/20 focus:border-rose-600' : 'border-slate-200 focus:border-[#15803d] focus:bg-white'
+                        }`}
                       />
-                      {errors.message && <span className="text-xs text-rose-600 mt-1 block font-semibold">{errors.message.message}</span>}
+                      {errors.message && (
+                        <span className="text-xs text-rose-600 mt-1 flex items-center gap-1 font-semibold">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                          <span>{errors.message.message}</span>
+                        </span>
+                      )}
                     </div>
 
                     <Button
@@ -230,3 +296,5 @@ export const ContactPage: React.FC = () => {
     </>
   );
 };
+
+export default ContactPage;

@@ -6,20 +6,37 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { FadeIn } from '../components/motion/FadeIn';
 import { Button } from '../components/ui/Button';
-import { Building2, CheckCircle2, Handshake, Sparkles } from 'lucide-react';
+import { PhoneInput } from '../components/ui/PhoneInput';
+import { Building2, CheckCircle2, Handshake, Sparkles, AlertCircle } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 const partnerSchema = z.object({
-  organizationName: z.string().min(2, 'Organization Name is required'),
-  contactPerson: z.string().min(2, 'Contact Person Name is required'),
-  designation: z.string().min(2, 'Designation is required'),
-  email: z.string().email('Valid work email is required'),
-  phone: z.string().min(10, 'Valid contact number is required'),
+  organizationName: z.string().min(2, 'Organization / Company Name is required (min 2 characters)'),
+  contactPerson: z
+    .string()
+    .min(2, 'Contact Person Name is required')
+    .regex(/^[a-zA-Z\s\.\']{2,100}$/, 'Contact Person Name should contain letters and spaces only'),
+  designation: z.string().min(2, 'Official Designation is required'),
+  email: z
+    .string()
+    .min(1, 'Official Work Email is required')
+    .email('Please enter a valid work email address (e.g. name@company.com)'),
+  phone: z
+    .string()
+    .regex(/^(?:\+91[\s-]?)?[6-9]\d{9}$/, 'Please enter a valid 10-digit phone number (starting with 6-9)'),
   organizationType: z.enum(['corporate_csr', 'educational_institution', 'ngo', 'healthcare', 'philanthropist', 'other']),
-  website: z.string().optional(),
+  website: z
+    .string()
+    .optional()
+    .refine((val) => !val || /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w-./?%&=]*)?$/.test(val), {
+      message: 'Please enter a valid website URL (e.g. https://organization.com)',
+    }),
   cityState: z.string().min(2, 'Location (City, State) is required'),
-  proposedContribution: z.string().min(5, 'Please summarize proposed contribution area'),
-  comments: z.string().optional(),
+  proposedContribution: z
+    .string()
+    .min(10, 'Please describe your proposed contribution area (at least 10 characters)')
+    .max(1000, 'Contribution summary cannot exceed 1000 characters'),
+  comments: z.string().max(1000, 'Comments cannot exceed 1000 characters').optional(),
 });
 
 type PartnerSchemaType = z.infer<typeof partnerSchema>;
@@ -30,9 +47,12 @@ export const PartnerPage: React.FC = () => {
   const {
     register,
     handleSubmit,
+    setValue,
+    watch,
     formState: { errors },
   } = useForm<PartnerSchemaType>({
     resolver: zodResolver(partnerSchema),
+    mode: 'onTouched',
     defaultValues: {
       organizationName: formData.organizationName || '',
       contactPerson: formData.contactPerson || '',
@@ -46,6 +66,8 @@ export const PartnerPage: React.FC = () => {
       comments: formData.comments || '',
     },
   });
+
+  const phoneValue = watch('phone') || '';
 
   const onSubmit = async (data: PartnerSchemaType) => {
     const success = await submitPartnerForm(data);
@@ -122,21 +144,34 @@ export const PartnerPage: React.FC = () => {
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold text-slate-800 mb-1">Organization Name</label>
+                      <label className="block text-xs font-bold text-slate-800 mb-1">
+                        Organization Name <span className="text-rose-600">*</span>
+                      </label>
                       <input
                         {...register('organizationName')}
                         type="text"
                         placeholder="e.g. Acme Corp / Kerala University"
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-950 placeholder-slate-400 focus:outline-none focus:border-[#15803d] focus:bg-white text-sm font-medium"
+                        className={`w-full px-4 py-3 rounded-xl bg-slate-50 border text-slate-950 placeholder-slate-400 focus:outline-none text-sm font-medium transition-colors ${
+                          errors.organizationName ? 'border-rose-500 bg-rose-50/20 focus:border-rose-600' : 'border-slate-200 focus:border-[#15803d] focus:bg-white'
+                        }`}
                       />
-                      {errors.organizationName && <span className="text-xs text-rose-600 mt-1 block font-semibold">{errors.organizationName.message}</span>}
+                      {errors.organizationName && (
+                        <span className="text-xs text-rose-600 mt-1 flex items-center gap-1 font-semibold">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                          <span>{errors.organizationName.message}</span>
+                        </span>
+                      )}
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-slate-800 mb-1">Organization Type</label>
+                      <label className="block text-xs font-bold text-slate-800 mb-1">
+                        Organization Type <span className="text-rose-600">*</span>
+                      </label>
                       <select
                         {...register('organizationType')}
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-950 text-sm font-medium"
+                        className={`w-full px-4 py-3 rounded-xl bg-slate-50 border text-slate-950 text-sm font-medium focus:outline-none focus:border-[#15803d] ${
+                          errors.organizationType ? 'border-rose-500 bg-rose-50/20' : 'border-slate-200'
+                        }`}
                       >
                         <option value="corporate_csr">Corporate CSR Partner</option>
                         <option value="educational_institution">Educational Institution / School</option>
@@ -145,67 +180,116 @@ export const PartnerPage: React.FC = () => {
                         <option value="philanthropist">Philanthropist / HNI Foundation</option>
                         <option value="other">Other</option>
                       </select>
+                      {errors.organizationType && (
+                        <span className="text-xs text-rose-600 mt-1 flex items-center gap-1 font-semibold">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                          <span>{errors.organizationType.message}</span>
+                        </span>
+                      )}
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold text-slate-800 mb-1">Contact Person Name</label>
+                      <label className="block text-xs font-bold text-slate-800 mb-1">
+                        Contact Person Name <span className="text-rose-600">*</span>
+                      </label>
                       <input
                         {...register('contactPerson')}
                         type="text"
-                        placeholder="Name"
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-950 text-sm font-medium"
+                        placeholder="Name of Primary Contact"
+                        className={`w-full px-4 py-3 rounded-xl bg-slate-50 border text-slate-950 placeholder-slate-400 focus:outline-none text-sm font-medium transition-colors ${
+                          errors.contactPerson ? 'border-rose-500 bg-rose-50/20 focus:border-rose-600' : 'border-slate-200 focus:border-[#15803d] focus:bg-white'
+                        }`}
                       />
-                      {errors.contactPerson && <span className="text-xs text-rose-600 mt-1 block font-semibold">{errors.contactPerson.message}</span>}
+                      {errors.contactPerson && (
+                        <span className="text-xs text-rose-600 mt-1 flex items-center gap-1 font-semibold">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                          <span>{errors.contactPerson.message}</span>
+                        </span>
+                      )}
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-slate-800 mb-1">Designation</label>
+                      <label className="block text-xs font-bold text-slate-800 mb-1">
+                        Designation <span className="text-rose-600">*</span>
+                      </label>
                       <input
                         {...register('designation')}
                         type="text"
-                        placeholder="Head of CSR / Principal"
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-950 text-sm font-medium"
+                        placeholder="Head of CSR / Principal / Director"
+                        className={`w-full px-4 py-3 rounded-xl bg-slate-50 border text-slate-950 placeholder-slate-400 focus:outline-none text-sm font-medium transition-colors ${
+                          errors.designation ? 'border-rose-500 bg-rose-50/20 focus:border-rose-600' : 'border-slate-200 focus:border-[#15803d] focus:bg-white'
+                        }`}
                       />
-                      {errors.designation && <span className="text-xs text-rose-600 mt-1 block font-semibold">{errors.designation.message}</span>}
+                      {errors.designation && (
+                        <span className="text-xs text-rose-600 mt-1 flex items-center gap-1 font-semibold">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                          <span>{errors.designation.message}</span>
+                        </span>
+                      )}
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold text-slate-800 mb-1">Official Work Email</label>
+                      <label className="block text-xs font-bold text-slate-800 mb-1">
+                        Official Work Email <span className="text-rose-600">*</span>
+                      </label>
                       <input
                         {...register('email')}
                         type="email"
                         placeholder="csr@organization.com"
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-950 text-sm font-medium"
+                        className={`w-full px-4 py-3 rounded-xl bg-slate-50 border text-slate-950 placeholder-slate-400 focus:outline-none text-sm font-medium transition-colors ${
+                          errors.email ? 'border-rose-500 bg-rose-50/20 focus:border-rose-600' : 'border-slate-200 focus:border-[#15803d] focus:bg-white'
+                        }`}
                       />
-                      {errors.email && <span className="text-xs text-rose-600 mt-1 block font-semibold">{errors.email.message}</span>}
+                      {errors.email && (
+                        <span className="text-xs text-rose-600 mt-1 flex items-center gap-1 font-semibold">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                          <span>{errors.email.message}</span>
+                        </span>
+                      )}
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-slate-800 mb-1">Phone Number</label>
-                      <input
-                        {...register('phone')}
-                        type="tel"
-                        placeholder="+91 98765 43210"
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-950 text-sm font-medium"
+                      <label className="block text-xs font-bold text-slate-800 mb-1">
+                        Phone Number <span className="text-rose-600">*</span>
+                      </label>
+                      <PhoneInput
+                        value={phoneValue}
+                        onChange={(val) => setValue('phone', val, { shouldValidate: true, shouldDirty: true })}
+                        error={!!errors.phone}
+                        placeholder="10-digit contact number"
                       />
-                      {errors.phone && <span className="text-xs text-rose-600 mt-1 block font-semibold">{errors.phone.message}</span>}
+                      {errors.phone && (
+                        <span className="text-xs text-rose-600 mt-1 flex items-center gap-1 font-semibold">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                          <span>{errors.phone.message}</span>
+                        </span>
+                      )}
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold text-slate-800 mb-1">Location (City, State)</label>
+                      <label className="block text-xs font-bold text-slate-800 mb-1">
+                        Location (City, State) <span className="text-rose-600">*</span>
+                      </label>
                       <input
                         {...register('cityState')}
                         type="text"
                         placeholder="Kannur, Kerala"
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-950 text-sm font-medium"
+                        className={`w-full px-4 py-3 rounded-xl bg-slate-50 border text-slate-950 placeholder-slate-400 focus:outline-none text-sm font-medium transition-colors ${
+                          errors.cityState ? 'border-rose-500 bg-rose-50/20 focus:border-rose-600' : 'border-slate-200 focus:border-[#15803d] focus:bg-white'
+                        }`}
                       />
-                      {errors.cityState && <span className="text-xs text-rose-600 mt-1 block font-semibold">{errors.cityState.message}</span>}
+                      {errors.cityState && (
+                        <span className="text-xs text-rose-600 mt-1 flex items-center gap-1 font-semibold">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                          <span>{errors.cityState.message}</span>
+                        </span>
+                      )}
                     </div>
 
                     <div>
@@ -214,20 +298,37 @@ export const PartnerPage: React.FC = () => {
                         {...register('website')}
                         type="url"
                         placeholder="https://www.organization.com"
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-950 text-sm font-medium"
+                        className={`w-full px-4 py-3 rounded-xl bg-slate-50 border text-slate-950 placeholder-slate-400 focus:outline-none text-sm font-medium transition-colors ${
+                          errors.website ? 'border-rose-500 bg-rose-50/20 focus:border-rose-600' : 'border-slate-200 focus:border-[#15803d] focus:bg-white'
+                        }`}
                       />
+                      {errors.website && (
+                        <span className="text-xs text-rose-600 mt-1 flex items-center gap-1 font-semibold">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                          <span>{errors.website.message}</span>
+                        </span>
+                      )}
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-800 mb-1">Proposed Collaboration Area</label>
+                    <label className="block text-xs font-bold text-slate-800 mb-1">
+                      Proposed Collaboration Area <span className="text-rose-600">*</span>
+                    </label>
                     <textarea
                       {...register('proposedContribution')}
                       rows={3}
-                      placeholder="e.g. Sponsoring 500 Merit Scholarships, AI Lab installation in schools, CSR funding..."
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-950 placeholder-slate-400 focus:outline-none focus:border-[#15803d] focus:bg-white text-sm font-medium"
+                      placeholder="Describe your proposed contribution area (min 10 characters)..."
+                      className={`w-full px-4 py-3 rounded-xl bg-slate-50 border text-slate-950 placeholder-slate-400 focus:outline-none text-sm font-medium transition-colors ${
+                        errors.proposedContribution ? 'border-rose-500 bg-rose-50/20 focus:border-rose-600' : 'border-slate-200 focus:border-[#15803d] focus:bg-white'
+                      }`}
                     />
-                    {errors.proposedContribution && <span className="text-xs text-rose-600 mt-1 block font-semibold">{errors.proposedContribution.message}</span>}
+                    {errors.proposedContribution && (
+                      <span className="text-xs text-rose-600 mt-1 flex items-center gap-1 font-semibold">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{errors.proposedContribution.message}</span>
+                      </span>
+                    )}
                   </div>
 
                   <Button
@@ -249,3 +350,5 @@ export const PartnerPage: React.FC = () => {
     </>
   );
 };
+
+export default PartnerPage;
