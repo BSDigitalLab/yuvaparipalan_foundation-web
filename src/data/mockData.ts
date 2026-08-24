@@ -394,6 +394,15 @@ export const FOUNDER_PATRONS: Leader[] = [
     avatarUrl: '/team/patrons/Ahmed_Mullachery.png',
   },
   {
+    id: 'kareem-pannithadam',
+    name: 'Kareem Pannithadam',
+    role: 'Social Activist, Thrissur',
+    location: 'Thrissur',
+    category: 'patron',
+    bio: 'Prominent social leader dedicated to grassroots community welfare.',
+    avatarUrl: '/team/patrons/Kareem_Pannithadam.png',
+  },
+  {
     id: 'pradeep-kumar',
     name: 'Pradeep Kumar',
     role: 'Retd. Deputy Director, Khadi Board',
@@ -448,15 +457,6 @@ export const FOUNDER_PATRONS: Leader[] = [
     category: 'patron',
     bio: 'Renowned language expert and academic mentor guiding communication skills, linguistic proficiency, and youth development.',
     avatarUrl: '/team/patrons/Dr.David_Chris.png',
-  },
-  {
-    id: 'kareem-pannithadam',
-    name: 'Kareem Pannithadam',
-    role: 'Social Activist, Thrissur',
-    location: 'Thrissur',
-    category: 'patron',
-    bio: 'Prominent social leader dedicated to grassroots community welfare.',
-    avatarUrl: '/team/patrons/Kareem_Pannithadam.png',
   },
 ];
 
