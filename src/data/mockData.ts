@@ -376,6 +376,17 @@ export const FOUNDER_PATRONS: Leader[] = [
     featured: true,
   },
   {
+    id: 'vijay-anand',
+    name: 'Vijay Anand',
+    role: 'Hon. Trade Commissioner to Africa',
+    organization: 'India Africa Trade Council',
+    location: 'UAE',
+    category: 'patron',
+    bio: 'Hon. Trade Commissioner to Africa representing the India Africa Trade Council, supporting international youth exchange and trade mentorship.',
+    avatarUrl: '/team/patrons/Vijay_Anand.png',
+    featured: true,
+  },
+  {
     id: 'dr-dinakaran-gopalan',
     name: 'Dr. Dinakaran Gopalan',
     role: 'Senior Psychologist',
