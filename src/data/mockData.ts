@@ -344,6 +344,24 @@ export const TEAM_MEMBERS: Leader[] = [
     bio: 'Ensuring financial compliance, transparency, and audit standards.',
     avatarUrl: '/team/Rupesh_Kumar.png',
   },
+  {
+    id: 'laisa-sojan',
+    name: 'Laisa Sojan',
+    role: 'Chief – Training and Development',
+    location: 'Kannur',
+    category: 'executive',
+    bio: 'Distinguished educator & former headmistress guiding student mentoring, training & development initiatives.',
+    avatarUrl: '/team/Laisa_Sojan.png',
+  },
+  {
+    id: 'muhammad-shamseer',
+    name: 'Muhammad Shamseer',
+    role: 'Chief – Students Counselling Team',
+    location: 'Kannur',
+    category: 'executive',
+    bio: 'Leading student counseling initiatives, emotional well-being, and academic guidance.',
+    avatarUrl: '/team/Muhammad_Shamseer.png',
+  },
 ];
 
 export const FOUNDER_PATRONS: Leader[] = [
@@ -394,15 +412,6 @@ export const FOUNDER_PATRONS: Leader[] = [
     avatarUrl: '/team/patrons/Sojan_Varghese.png',
   },
   {
-    id: 'laisa-sojan',
-    name: 'Laisa Sojan',
-    role: 'Retd. Headmistress',
-    location: 'Kannur',
-    category: 'patron',
-    bio: 'Distinguished educator & former headmistress guiding student mentoring & training initiatives.',
-    avatarUrl: '/team/Laisa_Sojan.png',
-  },
-  {
     id: 'prajod-p-raj',
     name: 'Prajod P Raj',
     role: 'Chief Editor, Business Insight Magazine',
@@ -423,9 +432,9 @@ export const FOUNDER_PATRONS: Leader[] = [
   },
   {
     id: 'chandran-t-s',
-    name: 'Chandran',
-    role: 'Retd. Deputy Director',
-    organization: 'Dept of Industries & Commerce, Govt of Kerala',
+    name: 'Chandran T S',
+    role: 'Former Deputy Director of the Department of Industries & Commerce, Government of Kerala',
+    organization: 'Department of Industries & Commerce, Government of Kerala',
     location: 'Ernakulam',
     category: 'patron',
     bio: 'Policy advisor guiding MSME growth and industrial skill development.',
