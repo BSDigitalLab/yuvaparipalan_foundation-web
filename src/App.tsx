@@ -14,6 +14,8 @@ const GalleryPage = lazy(() => import('./pages/GalleryPage').then((m) => ({ defa
 const ContactPage = lazy(() => import('./pages/ContactPage').then((m) => ({ default: m.ContactPage })));
 const VolunteerPage = lazy(() => import('./pages/VolunteerPage').then((m) => ({ default: m.VolunteerPage })));
 const PartnerPage = lazy(() => import('./pages/PartnerPage').then((m) => ({ default: m.PartnerPage })));
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage').then((m) => ({ default: m.PrivacyPolicyPage })));
+const TermsConditionsPage = lazy(() => import('./pages/TermsConditionsPage').then((m) => ({ default: m.TermsConditionsPage })));
 
 // Scroll To Top on Route Change
 const ScrollToTop: React.FC = () => {
@@ -52,6 +54,9 @@ export const App: React.FC = () => {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/volunteer" element={<VolunteerPage />} />
               <Route path="/partner" element={<PartnerPage />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+              <Route path="/terms-and-conditions" element={<TermsConditionsPage />} />
+              <Route path="/terms" element={<TermsConditionsPage />} />
               <Route path="*" element={<HomePage />} />
             </Routes>
           </Suspense>

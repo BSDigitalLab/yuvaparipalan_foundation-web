@@ -148,23 +148,19 @@ export const Footer: React.FC = () => {
               Build with <Heart className="w-3.5 h-3.5 text-rose-400 fill-rose-400" /> by Branding Sparrow
             </span>
             <span className="text-emerald-800/80">|</span>
-            <a 
-              href="https://www.yuvaparipalan.com/privacy-policy" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <Link 
+              to="/privacy-policy" 
               className="hover:text-white transition-colors"
             >
               Privacy Policy
-            </a>
+            </Link>
             <span className="text-emerald-800/80">|</span>
-            <a 
-              href="https://www.yuvaparipalan.com/terms" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <Link 
+              to="/terms-and-conditions" 
               className="hover:text-white transition-colors"
             >
               Terms & Conditions
-            </a>
+            </Link>
           </div>
         </div>
       </div>

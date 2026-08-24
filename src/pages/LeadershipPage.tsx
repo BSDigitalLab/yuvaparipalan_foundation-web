@@ -91,7 +91,11 @@ export const LeadershipPage: React.FC = () => {
                           {leader.id === 'biju-sivanandan' 
                             ? 'FOUNDER' 
                             : leader.id === 'manoj-rohini' || leader.id === 'manikandan-p'
-                            ? 'DIRECTOR & FOUNDER' 
+                            ? 'DIRECTOR & CO-FOUNDER' 
+                            : leader.id === 'pk-mishra'
+                            ? 'CHIEF MENTOR'
+                            : leader.id === 'abdul-rahman-haji'
+                            ? 'CHIEF PATRON'
                             : 'OUR TEAM'}
                         </span>
                         <h3 className="font-heading font-extrabold text-lg sm:text-xl text-slate-950 group-hover:text-emerald-900 transition-colors leading-snug mt-1">
