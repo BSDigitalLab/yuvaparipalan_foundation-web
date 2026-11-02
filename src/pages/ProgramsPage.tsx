@@ -466,118 +466,149 @@ export const ProgramsPage: React.FC = () => {
         </div>
       </div>
       {/* Submodule Informative Popup Modal */}
-      {selectedSubmodule && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/60 backdrop-blur-xs animate-in fade-in duration-200"
-          onClick={() => setSelectedSubmodule(null)}
-          role="dialog"
-          aria-modal="true"
-        >
+      {selectedSubmodule && (() => {
+        const nestedBenefits: string[] = [];
+        if (selectedSubmodule.submodules && selectedSubmodule.submodules.length > 0) {
+          selectedSubmodule.submodules.forEach((sm) => {
+            if (sm?.name && !nestedBenefits.includes(sm.name)) {
+              nestedBenefits.push(sm.name);
+            }
+          });
+        }
+        if (selectedSubmodule.key_highlights && selectedSubmodule.key_highlights.length > 0) {
+          selectedSubmodule.key_highlights.forEach((kh) => {
+            if (kh && !nestedBenefits.includes(kh)) {
+              nestedBenefits.push(kh);
+            }
+          });
+        }
+        const hasNestedSubmodules = nestedBenefits.length > 0;
+
+        return (
           <div
-            className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[90vh] animate-in zoom-in-95 duration-200"
-            onClick={(e) => e.stopPropagation()}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/60 backdrop-blur-xs animate-in fade-in duration-200"
+            onClick={() => setSelectedSubmodule(null)}
+            role="dialog"
+            aria-modal="true"
           >
-            {/* Modal Header */}
-            <div className="flex items-center justify-between px-6 pt-5 pb-3 border-b border-slate-100">
-              <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold uppercase bg-emerald-100 text-emerald-900 border border-emerald-300">
-                  {selectedSubmodule.offering_type ? selectedSubmodule.offering_type.replace('_', ' ') : 'OFFERING'}
-                </span>
-                {selectedSubmodule.delivery_type && (
-                  <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-mono font-semibold uppercase bg-slate-100 text-slate-600 border border-slate-200">
-                    {selectedSubmodule.delivery_type.replace('_', ' ')}
-                  </span>
+            <div
+              className={`relative w-full ${
+                hasNestedSubmodules ? 'max-w-4xl' : 'max-w-lg'
+              } bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[92vh] animate-in zoom-in-95 duration-200`}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal Header: Clean header without unwanted tags (MEMBERSHIP ONLINE) */}
+              <div className="flex items-center justify-end px-6 pt-4 pb-2 border-b border-slate-100">
+                <button
+                  onClick={() => setSelectedSubmodule(null)}
+                  className="p-1.5 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors focus:outline-none"
+                  aria-label="Close dialog"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Modal Body */}
+              <div className="p-6 overflow-y-auto space-y-4">
+                {/* Top Section: Auto-aligning width without increasing height */}
+                {hasNestedSubmodules ? (
+                  <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center">
+                    {selectedSubmodule.image_url && (
+                      <div className="sm:col-span-4 flex items-center justify-center bg-slate-50/70 p-3 rounded-2xl border border-slate-200/80">
+                        <img
+                          src={selectedSubmodule.image_url}
+                          alt={selectedSubmodule.name}
+                          className="max-h-32 sm:max-h-36 w-auto object-contain rounded-xl"
+                        />
+                      </div>
+                    )}
+                    <div className={selectedSubmodule.image_url ? 'sm:col-span-8 space-y-2' : 'sm:col-span-12 space-y-2'}>
+                      <h3 className="font-heading font-black text-xl text-slate-950 leading-snug">
+                        {selectedSubmodule.name}
+                      </h3>
+                      {selectedSubmodule.description && (
+                        <div className="bg-emerald-50/40 p-3.5 rounded-2xl border border-emerald-200/80">
+                          <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                            {selectedSubmodule.description}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    {selectedSubmodule.image_url && (
+                      <div className="w-full flex items-center justify-center bg-slate-50/70 p-3 rounded-2xl border border-slate-200/80">
+                        <img
+                          src={selectedSubmodule.image_url}
+                          alt={selectedSubmodule.name}
+                          className="max-h-52 w-auto object-contain rounded-xl"
+                        />
+                      </div>
+                    )}
+                    <h3 className="font-heading font-black text-xl text-slate-950 leading-snug">
+                      {selectedSubmodule.name}
+                    </h3>
+                    {selectedSubmodule.description && (
+                      <div className="bg-emerald-50/40 p-4 rounded-2xl border border-emerald-200/80">
+                        <p className="text-sm text-slate-700 leading-relaxed font-normal">
+                          {selectedSubmodule.description}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Submodule Benefits: 2 columns in a row, bold program heads before "-" and rest as subtexts */}
+                {hasNestedSubmodules && (
+                  <div className="space-y-2.5 pt-1">
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-900 block font-heading">
+                      Get access to,
+                    </span>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                      {nestedBenefits.map((itemText, idx) => {
+                        const match = itemText.match(/^([^\-\u2013\u2014]+)[\-\u2013\u2014](.+)$/);
+                        let head = itemText;
+                        let subtext: string | null = null;
+                        if (match) {
+                          head = match[1].trim();
+                          subtext = match[2].trim();
+                        }
+                        return (
+                          <div
+                            key={idx}
+                            className="flex items-start gap-2.5 p-3 bg-slate-50/80 rounded-2xl border border-slate-200/80 text-xs text-slate-800"
+                          >
+                            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                            <div className="leading-snug min-w-0">
+                              <span className="font-bold text-slate-950 font-heading block">{head}</span>
+                              {subtext && (
+                                <span className="text-slate-600 font-normal block text-[11px] sm:text-xs mt-0.5">
+                                  {subtext}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
                 )}
               </div>
-              <button
-                onClick={() => setSelectedSubmodule(null)}
-                className="p-1.5 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors focus:outline-none"
-                aria-label="Close dialog"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
 
-            {/* Modal Body */}
-            <div className="p-6 overflow-y-auto space-y-4">
-              {/* Product Media Display */}
-              {selectedSubmodule.image_url && (
-                <div className="w-full flex items-center justify-center bg-slate-50/70 p-3 rounded-2xl border border-slate-200/80">
-                  <img
-                    src={selectedSubmodule.image_url}
-                    alt={selectedSubmodule.name}
-                    className="max-h-56 w-auto object-contain rounded-xl"
-                  />
-                </div>
-              )}
-
-              {/* Title */}
-              <h3 className="font-heading font-black text-xl text-slate-950 leading-snug">
-                {selectedSubmodule.name}
-              </h3>
-
-              {/* Program Description */}
-              {selectedSubmodule.description && (
-                <div className="bg-emerald-50/40 p-4 rounded-2xl border border-emerald-200/80">
-                  <p className="text-sm text-slate-700 leading-relaxed font-normal">
-                    {selectedSubmodule.description}
-                  </p>
-                </div>
-              )}
-
-              {/* Nested Curriculum Modules (if any) */}
-              {selectedSubmodule.submodules && selectedSubmodule.submodules.length > 0 && (
-                <div className="space-y-2 pt-1">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-900 block font-heading">
-                    Included Curriculum Modules ({selectedSubmodule.submodules.length})
-                  </span>
-                  <div className="space-y-1.5 max-h-40 overflow-y-auto pr-1">
-                    {selectedSubmodule.submodules.map((sm, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center gap-2 p-2 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-800"
-                      >
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                        <span className="font-medium">{sm.name}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Key Highlights (if any) */}
-              {selectedSubmodule.key_highlights && selectedSubmodule.key_highlights.length > 0 && (
-                <div className="space-y-2 pt-1">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-900 block font-heading">
-                    Key Inclusions ({selectedSubmodule.key_highlights.length})
-                  </span>
-                  <div className="space-y-1.5">
-                    {selectedSubmodule.key_highlights.map((kh, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center gap-2 p-2 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-800"
-                      >
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                        <span className="font-medium">{kh}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Modal Footer */}
-            <div className="px-6 py-4 bg-slate-50 border-t border-slate-100 flex items-center justify-end">
-              <button
-                onClick={() => setSelectedSubmodule(null)}
-                className="px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-xl transition-colors shadow-sm focus:outline-none"
-              >
-                Close
-              </button>
+              {/* Modal Footer */}
+              <div className="px-6 py-4 bg-slate-50 border-t border-slate-100 flex items-center justify-end">
+                <button
+                  onClick={() => setSelectedSubmodule(null)}
+                  className="px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-xl transition-colors shadow-sm focus:outline-none"
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
     </>
   );
 };
