@@ -236,11 +236,8 @@ export const ProgramsPage: React.FC = () => {
                 </span>
                 <div>
                   <h2 className="font-heading font-black text-2xl sm:text-3xl text-slate-950 tracking-tight">
-                    Published Programs — Enrolling Now
+                    Active Programs
                   </h2>
-                  <p className="text-xs text-slate-600 font-medium mt-0.5">
-                    Certified active programs available for immediate enrollment and scholarship support.
-                  </p>
                 </div>
               </div>
               <Badge variant="emerald" className="self-start sm:self-auto font-mono text-[11px] px-3 py-1">
@@ -334,21 +331,27 @@ export const ProgramsPage: React.FC = () => {
                             </div>
                           </div>
 
-                          {/* RIGHT: Price Card with matching height and clean structure (lg:col-span-4) */}
-                          <div className="lg:col-span-4 bg-gradient-to-br from-emerald-50/90 via-emerald-50/50 to-white p-6 sm:p-8 rounded-3xl border border-emerald-200/90 shadow-xs flex flex-col justify-between items-center text-center h-full space-y-6">
-                            <div className="my-auto flex flex-col items-center justify-center space-y-2">
+                          {/* RIGHT: Price Card with enhanced background visualization and matching height (lg:col-span-4) */}
+                          <div className="lg:col-span-4 relative overflow-hidden bg-gradient-to-br from-emerald-100/80 via-emerald-50/90 to-teal-50/70 p-6 sm:p-8 rounded-3xl border border-emerald-300/80 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between items-center text-center h-full space-y-6 group/price">
+                            {/* Decorative ambient background glows and subtle texture */}
+                            <div className="absolute -top-16 -right-16 w-44 h-44 bg-gradient-to-br from-emerald-400/25 to-teal-300/15 rounded-full blur-2xl pointer-events-none group-hover/price:scale-110 transition-transform duration-500" />
+                            <div className="absolute -bottom-16 -left-16 w-44 h-44 bg-gradient-to-tr from-emerald-300/20 to-emerald-500/15 rounded-full blur-2xl pointer-events-none group-hover/price:scale-110 transition-transform duration-500" />
+                            <div className="absolute inset-0 bg-[radial-gradient(#059669_1px,transparent_1px)] [background-size:18px_18px] opacity-[0.07] pointer-events-none" />
+                            <div className="absolute inset-0 rounded-3xl border border-white/60 pointer-events-none" />
+
+                            <div className="relative z-10 my-auto flex flex-col items-center justify-center space-y-2.5">
                               {/* Program Type text before price */}
-                              <span className="text-xs sm:text-sm font-extrabold font-mono text-emerald-800 uppercase tracking-widest block">
+                              <span className="text-xs sm:text-sm font-extrabold font-mono text-emerald-900 uppercase tracking-widest block bg-white/80 px-3.5 py-1 rounded-full border border-emerald-300/70 shadow-2xs">
                                 {programType}
                               </span>
-                              <div className="text-4xl sm:text-5xl font-black text-slate-950 font-mono tracking-tight">
+                              <div className="text-4xl sm:text-5xl font-black text-slate-950 font-mono tracking-tight drop-shadow-2xs">
                                 {program.commercials.subscription_price > 0
                                   ? `₹${program.commercials.subscription_price.toLocaleString('en-IN')}`
                                   : 'Grant Funded'}
                               </div>
                             </div>
 
-                            <div className="pt-4">
+                            <div className="relative z-10 w-full pt-4">
                               {isChangepreneur ? (
                                 <Link to="/programs/changepreneur-circle" className="w-full block">
                                   <button className="w-full bg-[#15803d] hover:bg-[#166534] text-white font-black text-sm px-6 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 hover:scale-[1.02] flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-emerald-700">
